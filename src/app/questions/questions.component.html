@@ -3,9 +3,9 @@
 
 
 <div *ngIf="questions.length">
-  <div *ngFor="let question of questions; index as questionId">
+  <div *ngFor="let question of questions">
     
-    <h3><li><a [routerLink]="['/questions/', questionId]" routerLinkActive="active" title="Clickni suda plizz">
+    <h3><li><a [routerLink]="['/questions/', question.objectId]" routerLinkActive="active" title="Clickni suda plizz">
       {{question.title}}
     </a>
     
