@@ -7,7 +7,7 @@ import { QuestionsComponent } from './questions/questions.component';
 const routes: Routes = [
   {path: '', redirectTo: '/questions', pathMatch: 'full'},
   {path: 'questions', component: QuestionsComponent},
-  {path: 'questions/:id', component: AnswersComponent},
+  {path: 'questions/:objectId', component: AnswersComponent},
   {path: '**', component: PageNotFoundComponent}
   
 ];
