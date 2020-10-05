@@ -1,0 +1,20 @@
+
+<button mat-button class="questionBtn"  (click)="createQuestion()" >New Question?</button>
+
+
+<div *ngIf="questions.length">
+  <div *ngFor="let question of questions; index as questionId">
+    
+    <h3><li><a [routerLink]="['/questions/', questionId]" routerLinkActive="active" title="Clickni suda plizz">
+      {{question.title}}
+    </a>
+    
+    <button mat-button (click)="deleteQuestion(question.objectId)">Delete</button>
+    
+  </li></h3>
+  
+</div>
+</div>
+
+
+<router-outlet></router-outlet>
