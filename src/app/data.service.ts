@@ -37,9 +37,10 @@ export class DataService {
     }>(`${this.REST_API_SERVER}/Answer`, this.headers).pipe(map((res) => res.results))
   }
 
-  public createQuestion(body: { title: string }): Observable<Question> {
-    return this.http.post<Question>(`${this.REST_API_SERVER}/Question`, body, this.headers)
-  }
+  public createQuestion( title: string ): Observable<Question> {
+    return this.http.post<Question>(`${this.REST_API_SERVER}/Question`, {title}, this.headers)
+    }
+  
 
   public createAnswer(body: {text: string}): Observable<Answer> {
     return this.http.post<Answer>(`${this.REST_API_SERVER}/Answer`, body, this.headers)

@@ -1,11 +1,15 @@
 
-<button mat-button class="questionBtn"  (click)="createQuestion()" >New Question?</button>
+<!-- <button mat-button class="questionBtn"  (click)="createQuestion()" >New Question?</button> -->
+
+
+<button mat-raised-button (click)="createQuestionDialog()">New question?</button>
+  
 
 
 <div *ngIf="questions.length">
   <div *ngFor="let question of questions">
     
-    <h3><li><a [routerLink]="['/questions/', question.objectId]" routerLinkActive="active" title="Clickni suda plizz">
+    <h3><li><a [routerLink]="['/questions/', question.objectId]" routerLinkActive="active" title="Question list item">
       {{question.title}}
     </a>
     
