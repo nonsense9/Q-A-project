@@ -1,12 +1,11 @@
-<button mat-button color="red" type="submit" (click)="createAnswer()">New Answer?</button>
+<button mat-button color="red" type="submit" (click)="createAnswerDialog()">New Answer?</button>
 <div *ngIf="answers?.length">
   <div *ngFor='let answer of answers'>
-    <h4><li>{{answer.text}}
-      <button mat-button (click)="editAnswer(answer)">Edit</button>
-      <button mat-button (click)="deleteAnswer(answer.objectId)">Delete</button>
-      
-
-    </li></h4>
+    <h4>
+      <li>{{answer.text}}
+        <button mat-button (click)="editAnswer(answer)">Edit</button>
+        <button mat-button (click)="deleteAnswer(answer.objectId)">Delete</button>
+      </li>
+    </h4>
   </div>
 </div>
-
