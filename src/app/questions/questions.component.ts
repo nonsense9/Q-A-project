@@ -38,7 +38,8 @@ export class QuestionsComponent implements OnInit {
 
   createQuestionDialog() {
     let dialogRef = this.dialog.open(DialogExampleComponent, {
-      data: { title },
+      height: '400px',
+      width: '600px',
     });
 
     dialogRef.afterClosed().subscribe((title) => {
