@@ -37,7 +37,8 @@ export class QuestionsComponent implements OnInit {
 
   createQuestionDialog() {
     let dialogRef = this.dialog.open(DialogExampleComponent, {
-      height: '200px',
+      height: '250px',
+      width: '300px'
       
     });
 

@@ -1,15 +1,16 @@
 <div>
-  <h2 mat-dialog-title>Enter your question</h2>
+  <h2 mat-dialog-title align="center">Enter your question</h2>
 </div>
 
-<div>
+<div class="container">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <mat-form-field>
-      <input type="text" formControlName="title">
-    </mat-form-field>
-    <button mat-stroked-button  type="submit">Add</button>
-    <button mat-stroked-button (click)="close()">Close</button>
+    <input type="text" formControlName="title">
+
+    <div mat-dialog-actions align="center">
+      <button mat-stroked-button type="submit">Add</button>
+      <button mat-stroked-button (click)="close()">Close</button>
+    </div>
   </form>
 
- 
+
 </div>

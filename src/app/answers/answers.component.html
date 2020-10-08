@@ -1,10 +1,13 @@
-<button mat-stroked-button color="basic" class="answerBtn" type="submit" (click)="createAnswerDialog()">New Answer?</button>
+<button mat-stroked-button color="basic" class="answerBtn" type="submit" (click)="createAnswerDialog()">New
+  Answer?</button>
 <div *ngIf="answers?.length">
   <div *ngFor='let answer of answers'>
     <h3>
       <li><a [routerLink]="['/questions/']" routerLinkActive="active" mat-flat-button>{{answer.text}}</a>
         <button mat-flat-button color="primary" class="edit" (click)="editAnswer(answer)">Edit</button>
         <button mat-flat-button color="warn" class="delete" (click)="deleteAnswer(answer.objectId)">Delete</button>
+        <hr>
+
       </li>
     </h3>
   </div>
