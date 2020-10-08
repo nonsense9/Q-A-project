@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { DataService } from './../data.service';
 import { Answer } from '../interfaces';
+import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
 
 @Component({
   selector: 'app-answers',
@@ -43,18 +44,22 @@ export class AnswersComponent implements OnInit {
     });
   }
 
-  editAnswer(answer) {
-    const text: { text: string } = {
-      text:
-        Math.random().toString(36).substring(2, 15) +
-        Math.random().toString(36).substring(2, 15),
-    };
+  editAnswerDialog(answer) {
+  
+    let dialogRef = this.dialog.open(DialogEditComponent, {
+      height: '250px',
+      width: '300px',
+    });
 
-    this.answerService.editAnswers(text, answer.objectId).subscribe((data) => {
+    dialogRef.afterClosed().subscribe((text) => {
+
+    this.answerService.editAnswers(text, answer.objectId).subscribe((text) => {
       this.answers = this.answers.filter(
         ({ objectId }) => answer.objectId !== objectId
       );
       this.answers = [...this.answers, { objectId: answer.objectId, ...text }];
+      
     });
+    })
   }
 }

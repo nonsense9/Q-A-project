@@ -19,6 +19,7 @@ import { AnswersComponent } from './answers/answers.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DialogExampleComponent } from './dialog-example/dialog-example.component';
 import { DialogAnswerComponent } from './dialog-answer/dialog-answer.component';
+import { DialogEditComponent } from './dialog-edit/dialog-edit.component';
 
 
 
@@ -32,6 +33,7 @@ import { DialogAnswerComponent } from './dialog-answer/dialog-answer.component';
     PageNotFoundComponent,
     DialogExampleComponent,
     DialogAnswerComponent,
+    DialogEditComponent,
   ],
   imports: [
     BrowserModule,

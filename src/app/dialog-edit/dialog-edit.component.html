@@ -1,0 +1,14 @@
+<div>
+  <h2 mat-dialog-title align="center">Enter your changes</h2>
+</div>
+
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <textarea rows="5" type="text" formControlName="text"></textarea>
+    <div mat-dialog-actions align="center">
+      <button mat-stroked-button type="submit" mat-raised-button>Confirm</button>
+      <button mat-stroked-button (click)="close()" mat-raised-button>Close</button>
+    </div>
+  </form>
+
+</div>

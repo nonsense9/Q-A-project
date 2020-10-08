@@ -4,7 +4,7 @@
   <div *ngFor='let answer of answers'>
     <h3>
       <li><a [routerLink]="['/questions/']" routerLinkActive="active" mat-flat-button>{{answer.text}}</a>
-        <button mat-flat-button color="primary" class="edit" (click)="editAnswer(answer)">Edit</button>
+        <button mat-flat-button color="primary" class="edit" (click)="editAnswerDialog(answer)">Edit</button>
         <button mat-flat-button color="warn" class="delete" (click)="deleteAnswer(answer.objectId)">Delete</button>
         <hr>
       </li>
