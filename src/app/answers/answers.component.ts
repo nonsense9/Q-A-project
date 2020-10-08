@@ -22,16 +22,14 @@ export class AnswersComponent implements OnInit {
   }
 
   createAnswerDialog() {
-    
     let dialogRef = this.dialog.open(DialogAnswerComponent, {
       height: '250px',
-      width: '300px'
+      width: '300px',
     });
 
     dialogRef.afterClosed().subscribe((text) => {
       this.answerService.createAnswer(text).subscribe((text) => {
-
-        this.answers = [...this.answers, {...text}];
+        this.answers = [...this.answers, { ...text }];
       });
     });
   }

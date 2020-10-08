@@ -4,7 +4,7 @@
 
 <div class="container">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <input type="text" formControlName="title">
+    <textarea rows="5" type="text" formControlName="text"></textarea>
 
     <div mat-dialog-actions align="center">
       <button mat-stroked-button type="submit">Add</button>
