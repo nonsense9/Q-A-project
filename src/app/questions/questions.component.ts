@@ -3,8 +3,7 @@ import { DataService } from './../data.service';
 import { Question } from '../interfaces';
 
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { title } from 'process';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-questions',
@@ -38,8 +37,8 @@ export class QuestionsComponent implements OnInit {
 
   createQuestionDialog() {
     let dialogRef = this.dialog.open(DialogExampleComponent, {
-      height: '400px',
-      width: '600px',
+      height: '200px',
+      
     });
 
     dialogRef.afterClosed().subscribe((title) => {

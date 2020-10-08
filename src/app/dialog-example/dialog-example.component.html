@@ -5,13 +5,11 @@
 <div>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field>
-      <input type="text" matInput formControlName="title">
+      <input type="text" formControlName="title">
     </mat-form-field>
-    <button type="submit" >Add</button>
-    <button (click)="close()">Close</button>
+    <button mat-stroked-button  type="submit">Add</button>
+    <button mat-stroked-button (click)="close()">Close</button>
   </form>
 
-  <div>
-    {{form.value | json}}
-  </div>
+ 
 </div>

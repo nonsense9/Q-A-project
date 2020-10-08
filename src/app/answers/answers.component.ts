@@ -24,14 +24,12 @@ export class AnswersComponent implements OnInit {
   createAnswerDialog() {
     
     let dialogRef = this.dialog.open(DialogAnswerComponent, {
-      height: '400px',
-      width: '600px',
+      height: '200px'
     });
 
     dialogRef.afterClosed().subscribe((text) => {
       this.answerService.createAnswer(text).subscribe((text) => {
 
-        debugger
         this.answers = [...this.answers, {...text}];
       });
     });

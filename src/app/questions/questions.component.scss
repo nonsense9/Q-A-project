@@ -1,14 +1,24 @@
+// a {
+//   text-decoration: none;
+// }
+
+// a:focus {
+//   color: grey;
+//   text-decoration: underline;
+// }
+
+// a {
+//   color:black
+// }
+
 a {
-  text-decoration: none;
+  font-size: large;
 }
 
-a:focus {
-  color: grey;
-  text-decoration: underline;
-}
 
-a {
-  color:black
-}
 
+.questionBtn {
+  background-color: grey;
+  color: white;
+}
 
