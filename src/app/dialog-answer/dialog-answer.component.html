@@ -1,0 +1,16 @@
+<div>
+  <h2 mat-dialog-title>Enter your answer</h2>
+</div>
+
+<div> 
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input type="text" matInput formControlName="text">
+  </mat-form-field>
+  <button type="submit" mat-raised-button >Add</button>
+  <button (click)="close()" mat-raised-button>Close</button>
+</form>
+  <div>
+    {{form.value | json}}
+  </div>
+</div>

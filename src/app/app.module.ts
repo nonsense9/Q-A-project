@@ -18,6 +18,7 @@ import { QuestionsComponent } from './questions/questions.component';
 import { AnswersComponent } from './answers/answers.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DialogExampleComponent } from './dialog-example/dialog-example.component';
+import { DialogAnswerComponent } from './dialog-answer/dialog-answer.component';
 
 
 
@@ -30,6 +31,7 @@ import { DialogExampleComponent } from './dialog-example/dialog-example.componen
     AnswersComponent,
     PageNotFoundComponent,
     DialogExampleComponent,
+    DialogAnswerComponent,
   ],
   imports: [
     BrowserModule,

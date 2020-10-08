@@ -1,3 +1,4 @@
+import { DialogAnswerComponent } from './../dialog-answer/dialog-answer.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 
@@ -21,16 +22,18 @@ export class AnswersComponent implements OnInit {
   }
 
   createAnswerDialog() {
-    const text: { text: string } = {
-      text:
-        Math.random().toString(36).substring(2, 15) +
-        Math.random().toString(36).substring(2, 15),
-    };
+    
+    let dialogRef = this.dialog.open(DialogAnswerComponent, {
+      height: '400px',
+      width: '600px',
+    });
 
-    this.answerService.createAnswer(text).subscribe((data) => {
-      console.log(data);
+    dialogRef.afterClosed().subscribe((text) => {
+      this.answerService.createAnswer(text).subscribe((text) => {
 
-      this.answers = [...this.answers, { ...data, ...text }];
+        debugger
+        this.answers = [...this.answers, {...text}];
+      });
     });
   }
 
