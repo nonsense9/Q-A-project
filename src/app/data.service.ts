@@ -53,10 +53,10 @@ export class DataService {
     );
   }
 
-  public editAnswers(body: { text: string }, objectId): Observable<Answer> {
+  public editAnswers(text, objectId): Observable<Answer> {
     return this.http.put<Answer>(
       `${this.REST_API_SERVER}/Answer/${objectId}`,
-      body,
+      {text},
       this.headers
     );
   }
