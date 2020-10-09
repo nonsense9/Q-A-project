@@ -12,7 +12,7 @@ a {
 }
 
 hr {
-  margin: 20px 0px 0px 0px;
+  margin-top: 20px;
 }
 
 .container {
@@ -22,4 +22,13 @@ hr {
 .material-icons {
   vertical-align: middle;
   padding-bottom: 3px;
+  margin-left: 5px;
+}
+
+#edi {
+  color: blue;
+}
+
+#del {
+  color: red;
 }
