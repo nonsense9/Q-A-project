@@ -35,6 +35,7 @@ export class DataService {
         results: Answer[];
       }>(`${this.REST_API_SERVER}/Answer`, this.headers)
       .pipe(map((res) => res.results));
+      
   }
 
   public createQuestion(title: string): Observable<Question> {
@@ -74,4 +75,5 @@ export class DataService {
       this.headers
     );
   }
+
 }

@@ -3,7 +3,7 @@ import { DataService } from './../data.service';
 import { Question } from '../interfaces';
 
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-questions',
@@ -21,12 +21,6 @@ export class QuestionsComponent implements OnInit {
     });
   }
 
-  // const title: {title: string} = {title: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}
-
-  // this.questionService.createQuestion(title).subscribe((data) => {
-  //   this.questions = [...this.questions, { ...data, answerId: [] }];
-  // });
-
   deleteQuestion(objectId) {
     this.questionService.deleteQuestion(objectId).subscribe((data) => {
       this.questions = this.questions.filter(
@@ -38,16 +32,13 @@ export class QuestionsComponent implements OnInit {
   createQuestionDialog() {
     let dialogRef = this.dialog.open(DialogExampleComponent, {
       height: '250px',
-      width: '300px'
-      
+      width: '300px',
     });
 
     dialogRef.afterClosed().subscribe((title) => {
       this.questionService.createQuestion(title).subscribe((title) => {
-        this.questions = [
-          ...this.questions,
-          {  ...title, answerId: [] }
-        ];
+        this.questions = [...this.questions, { ...title }];
+        this.ngOnInit();
       });
     });
   }
