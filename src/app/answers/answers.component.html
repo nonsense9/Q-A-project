@@ -7,8 +7,10 @@
         <li><a [routerLink]="['/questions/']" routerLinkActive="active" mat-flat-button>{{answer.text}}</a>
 
 
-          <mat-icon style="cursor:pointer" inline="true" class="material-icons" (click)="editAnswerDialog(answer)">create</mat-icon>
-          <mat-icon style="cursor:pointer" inline="true" class="material-icons" (click)="deleteAnswer(answer.objectId)">delete</mat-icon>
+          <mat-icon style="cursor:pointer" inline="true" class="material-icons" id="edi" (click)="editAnswerDialog(answer)">
+            create</mat-icon>
+          <mat-icon style="cursor:pointer" inline="true" class="material-icons" id="del" (click)="deleteAnswer(answer.objectId)">
+            delete</mat-icon>
 
 
           <!-- <button mat-flat-button color="primary" class="edit" (click)="editAnswerDialog(answer)">Edit</button> -->
