@@ -1,24 +1,12 @@
 <button mat-stroked-button color="basic" class="questionBtn" (click)="createQuestionDialog()">New question?</button>
 
-<div *ngIf="questions.length">
-  <div *ngFor="let question of questions">
-    <div class="container">
-      <h3>
-        <li><a [routerLink]="['/questions/', question.objectId]" routerLinkActive="active" title="Question list item"
-            mat-flat-button>
-            {{question.title}}
-
-          </a>
-
-          <mat-icon style="cursor:pointer" inline="true" class="material-icons"
-            (click)="deleteQuestion(question.objectId)">delete</mat-icon>
-
-          <!-- <button mat-flat-button color="warn" class="delete" (click)="deleteQuestion(question.objectId)">Delete</button> -->
-
-          <hr>
-
-        </li>
-      </h3>
-    </div>
-  </div>
+<div *ngIf="questions.length" class="container">
+  <ol *ngFor="let question of questions">
+    <li><a [routerLink]="['/questions/', question.objectId]" routerLinkActive="active" title="Question list item" mat-flat-button>
+        <h3>{{question.title}}</h3></a>
+      <mat-icon style="cursor:pointer" inline="true" class="material-icons" (click)="deleteQuestion(question.objectId)">
+        delete</mat-icon>
+      <hr>
+    </li>
+  </ol>
 </div>

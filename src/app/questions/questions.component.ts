@@ -37,7 +37,8 @@ export class QuestionsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((title) => {
       this.questionService.createQuestion(title).subscribe((title) => {
-        this.questions = [...this.questions, { ...title }];
+        // this.questions = [...this.questions, { ...title }];
+
         this.ngOnInit();
       });
     });
