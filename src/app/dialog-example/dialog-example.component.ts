@@ -28,7 +28,9 @@ export class DialogExampleComponent implements OnInit {
   }
 
   close(): void {
-    this.dialogRef.close("");
+    if (!this.form) {
+    this.dialogRef.close();
+  }
   }
 
 

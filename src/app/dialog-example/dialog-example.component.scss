@@ -7,3 +7,7 @@ small {
   padding: 25px;
   color: red;
 }
+
+button:focus {
+  background-color: grey;
+}
