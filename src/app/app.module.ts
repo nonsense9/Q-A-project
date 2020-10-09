@@ -1,3 +1,4 @@
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
@@ -45,6 +46,7 @@ import { DialogEditComponent } from './dialog-edit/dialog-edit.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatIconModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
       {path: 'questions', component: QuestionsComponent},

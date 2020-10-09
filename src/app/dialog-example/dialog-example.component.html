@@ -4,11 +4,11 @@
 
 <div class="container">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <textarea rows="5" type="text" formControlName="title"></textarea>
+    <textarea rows="5" type="text" formControlName="title" minlength="1" required></textarea>
 
     <div mat-dialog-actions align="center">
-      <button mat-stroked-button type="submit">Add</button>
-      <button mat-stroked-button (click)="close()">Close</button>
+      <button mat-raised-button type="submit" [disabled]="!form.valid">Add</button>
+      <button mat-raised-button (click)="close()">Close</button>
     </div>
   </form>
 

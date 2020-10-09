@@ -31,6 +31,7 @@ export class AnswersComponent implements OnInit {
     dialogRef.afterClosed().subscribe((text) => {
       this.answerService.createAnswer(text).subscribe((text) => {
         this.answers = [...this.answers, { ...text }];
+        this.ngOnInit()
       });
     });
   }
@@ -58,8 +59,9 @@ export class AnswersComponent implements OnInit {
         ({ objectId }) => answer.objectId !== objectId
       );
       this.answers = [...this.answers, { objectId: answer.objectId, ...text }];
-      
+      this.ngOnInit()
     });
     })
   }
 }
+
