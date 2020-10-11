@@ -20,3 +20,11 @@ hr {
   padding-bottom: 3px;
   color: red;
 }
+
+ol {
+  list-style-type: none; /* Убираем исходные маркеры */
+  counter-increment: my-counter; /* Задаём имя счетчика */
+}
+li::before {
+  content: counter(my-counter) '.'; /* Выводим число с точкой */
+}

@@ -2,11 +2,19 @@
 
 <div *ngIf="questions.length" class="container">
   <ol *ngFor="let question of questions">
-    <li><a [routerLink]="['/questions/', question.objectId]" routerLinkActive="active" title="Question list item" mat-flat-button>
-        <h3>{{question.title}}</h3></a>
+    <li>
+      <a [routerLink]="['/questions/', question.objectId]" mat-flat-button routerLinkActive="active"
+         title="Question list item">
+        <h3>
+          {{question.title}}
+        </h3>
+      </a>
       <mat-icon style="cursor:pointer" inline="true" class="material-icons" (click)="deleteQuestion(question.objectId)">
-        delete</mat-icon>
+        delete
+      </mat-icon>
       <hr>
     </li>
   </ol>
 </div>
+
+

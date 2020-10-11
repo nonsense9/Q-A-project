@@ -29,13 +29,14 @@ export class QuestionsComponent implements OnInit {
     });
   }
 
-  createQuestionDialog() {
-    let dialogRef = this.dialog.open(DialogExampleComponent, {
+  createQuestionDialog(): void {
+    const dialogRef = this.dialog.open(DialogExampleComponent, {
       height: '250px',
       width: '300px',
     });
 
     dialogRef.afterClosed().subscribe((title) => {
+      // tslint:disable-next-line:no-shadowed-variable
       this.questionService.createQuestion(title).subscribe((title) => {
         // this.questions = [...this.questions, { ...title }];
 
