@@ -28,9 +28,7 @@ export class DialogExampleComponent implements OnInit {
   }
 
   close(): void {
-    if (!this.form) {
     this.dialogRef.close();
-  }
   }
 
 
@@ -39,11 +37,11 @@ export class DialogExampleComponent implements OnInit {
   }
 
   onSubmit() {
-    
+
     this.dialogRef.close(this.title.value);
-    
+
   }
-  
+
 }
 
 

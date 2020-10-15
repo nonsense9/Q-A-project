@@ -11,6 +11,8 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./questions.component.scss'],
 })
 export class QuestionsComponent implements OnInit {
+  title: string = "Learn about: Angular"
+  screen: string = "Question list item"
   questions: Question[] = [];
 
   constructor(private questionService: DataService, public dialog: MatDialog) {}
@@ -38,7 +40,6 @@ export class QuestionsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((title) => {
       // tslint:disable-next-line:no-shadowed-variable
       this.questionService.createQuestion(title).subscribe((title) => {
-        // this.questions = [...this.questions, { ...title }];
 
         this.ngOnInit();
       });

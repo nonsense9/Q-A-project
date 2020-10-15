@@ -1,30 +1,119 @@
-a {
-  font-size: large;
+.questions-container {
+  $bg-color: #ffffff;
+  background-color: $bg-color;
+  width: 580px;
+  height: 131px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
 }
 
-.questionBtn {
-  background-color: grey;
-  color: white;
+.question-card {
+
+  $light-text: #aaaaaa;
+  $bg-color: #ffffff;
+
+  background-color: $bg-color;
+  width: 580px;
+  height: 131px;
+  border-radius: 12px;
+
+
+  &__title {
+    padding-bottom: 10px;
+    width: 402px;
+    height: 19px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.15px;
+    color: #000000;
+  }
+
+  &__answers {
+    color: $light-text;
+    font-size: 10px;
+    font-weight: bold;
+    padding-bottom: 10px;
+  }
+
+  &__btn-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 20px 20px 20px;
+  }
+
+  &__del-btn {
+    border: none;
+    color: $light-text;
+    background-color: transparent;
+    text-transform: uppercase;
+    font-weight: bold;
+    align-self: flex-end;
+    padding: 20px;
+  }
+
 }
 
-hr {
-  margin-top: 20px;
+
+.question-card__btn-add {
+  width: 168px;
+  height: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.25px;
+  color: #8797ab;
+  display: inline-flex;
+  white-space: nowrap;
+  border: none;
+  background-color: #e1e5ea;
+  text-transform: uppercase;
 }
 
-.container {
-  padding: 1rem;
+.background-btn__add {
+  width: 580px;
+  height: 44px;
+  border-radius: 12px;
+  background-color: #e1e5ea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 14px;
 }
 
-.material-icons {
-  vertical-align: middle;
-  padding-bottom: 3px;
-  color: red;
+.questions-route {
+  width: 58px;
+  height: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.4px;
+  color: #8797ab;
+  margin-bottom: 6px;
+
 }
 
-ol {
-  list-style-type: none; /* Убираем исходные маркеры */
-  counter-increment: my-counter; /* Задаём имя счетчика */
-}
-li::before {
-  content: counter(my-counter) '.'; /* Выводим число с точкой */
+.question-title {
+  width: 187px;
+  height: 32px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.6;
+  letter-spacing: normal;
+  color: #000000;
+  white-space: nowrap;
 }

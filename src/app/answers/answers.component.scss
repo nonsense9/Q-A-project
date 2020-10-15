@@ -34,6 +34,7 @@ hr {
 }
 
 ol {
+  font-weight: bold;
   list-style-type: none; /* Убираем исходные маркеры */
   counter-increment: my-counter; /* Задаём имя счетчика */
 }

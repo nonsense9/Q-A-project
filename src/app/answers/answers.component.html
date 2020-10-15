@@ -1,6 +1,12 @@
+<div>
+<img src="assets/logo_2020-10-13/arrow-back-24-px.svg">
+</div>
+
+
 <button mat-stroked-button color="basic" class="answerBtn" type="submit" (click)="createAnswerDialog()">New
   Answer?
 </button>
+
 <div *ngIf="answers?.length" class="container">
   <ol *ngFor='let answer of answers'>
     <li>
@@ -11,9 +17,8 @@
         create
       </mat-icon>
       <mat-icon style="cursor:pointer" inline="true" class="material-icons" id="del"
-                (click)="deleteAnswer(answer.objectId)">
-        delete
-      </mat-icon>
+                (click)="deleteAnswer(answer.objectId)">delete</mat-icon>
+      <like-box></like-box>
       <hr>
     </li>
   </ol>

@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'questions', component: QuestionsComponent},
   {path: 'questions/:id', component: AnswersComponent},
   {path: '**', component: PageNotFoundComponent}
-  
+
 ];
 
 @NgModule({
