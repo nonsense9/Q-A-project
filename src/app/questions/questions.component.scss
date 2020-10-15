@@ -4,7 +4,7 @@
   width: 580px;
   height: 131px;
   border-radius: 12px;
-  display: flex;
+  display: grid;
   flex-direction: column;
 }
 
@@ -17,10 +17,10 @@
   width: 580px;
   height: 131px;
   border-radius: 12px;
+  margin-bottom: 12px;
 
 
   &__title {
-    padding-bottom: 10px;
     width: 402px;
     height: 19px;
     font-family: 'Roboto', sans-serif;
@@ -31,13 +31,14 @@
     line-height: normal;
     letter-spacing: 0.15px;
     color: #000000;
+    padding: 20px 0 0 20px;
   }
 
   &__answers {
     color: $light-text;
     font-size: 10px;
     font-weight: bold;
-    padding-bottom: 10px;
+    padding: 8px 0 12px 20px;
   }
 
   &__btn-group {
@@ -45,6 +46,9 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 20px 20px 20px;
+    .question-card__vote-box {
+      display: flex;
+    }
   }
 
   &__del-btn {
@@ -86,7 +90,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 14px;
+  margin: 14px 0 12px 0;
 }
 
 .questions-route {
@@ -117,3 +121,4 @@
   color: #000000;
   white-space: nowrap;
 }
+
