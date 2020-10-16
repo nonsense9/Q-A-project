@@ -10,6 +10,7 @@
   flex-direction: row;
   margin-right: 20px;
   padding: 6px 20px;
+  outline: none;
 
   span {
     width: 10px;
@@ -23,9 +24,11 @@
     letter-spacing: 1.25px;
     margin-left: 8px;
   }
+
   .up {
     color: #4caf50;
   }
+
   .down {
     color: #f44336;
   }

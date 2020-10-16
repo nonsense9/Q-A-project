@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import {Component, OnInit} from '@angular/core';
+import {AbstractControl, FormBuilder, FormGroup} from '@angular/forms';
+import {MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-answer',
@@ -14,7 +14,8 @@ export class DialogAnswerComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DialogAnswerComponent>,
     public fb: FormBuilder,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -22,7 +23,7 @@ export class DialogAnswerComponent implements OnInit {
     })
   }
 
-  close(){
+  close() {
     this.dialogRef.close('');
   }
 
@@ -33,5 +34,5 @@ export class DialogAnswerComponent implements OnInit {
   onSubmit() {
     this.dialogRef.close(this.text.value)
   }
-
 }
+

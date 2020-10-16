@@ -1,9 +1,9 @@
-import { DialogExampleComponent } from '../dialog-example/dialog-example.component';
-import { DataService } from '../data.service';
-import { Question } from '../interfaces';
+import {DialogExampleComponent} from '../dialog-example/dialog-example.component';
+import {DataService} from '../data.service';
+import {Question} from '../interfaces';
 
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import {Component, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-questions',
@@ -15,10 +15,11 @@ export class QuestionsComponent implements OnInit {
   screen: string = "Question list item"
   questions: Question[] = [];
 
-  constructor(private questionService: DataService, public dialog: MatDialog) {}
+  constructor(private questionService: DataService, public dialog: MatDialog) {
+  }
 
   ngOnInit() {
-  this.getAllQuestions();
+    this.getAllQuestions();
   }
 
   getAllQuestions() {
@@ -26,8 +27,9 @@ export class QuestionsComponent implements OnInit {
       this.questions = questions;
     });
   }
+
   deleteQuestion(objectId) {
-    this.questionService.deleteQuestion(objectId).subscribe((data:Question) => {
+    this.questionService.deleteQuestion(objectId).subscribe((data: Question) => {
       this.questions = this.questions.filter(
         (question) => question.objectId !== objectId
       );
@@ -42,7 +44,7 @@ export class QuestionsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((title) => {
       if (title) {
-        this.questionService.createQuestion(title).subscribe((title:Question) => {
+        this.questionService.createQuestion(title).subscribe((title: Question) => {
           this.getAllQuestions();
         });
       }
