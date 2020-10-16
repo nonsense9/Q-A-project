@@ -1,5 +1,5 @@
-import { DialogExampleComponent } from './../dialog-example/dialog-example.component';
-import { DataService } from './../data.service';
+import { DialogExampleComponent } from '../dialog-example/dialog-example.component';
+import { DataService } from '../data.service';
 import { Question } from '../interfaces';
 
 import { Component, OnInit } from '@angular/core';
@@ -18,11 +18,14 @@ export class QuestionsComponent implements OnInit {
   constructor(private questionService: DataService, public dialog: MatDialog) {}
 
   ngOnInit() {
+  this.getAllQuestions();
+  }
+
+  getAllQuestions() {
     this.questionService.getQuestions().subscribe((questions) => {
       this.questions = questions;
     });
   }
-
   deleteQuestion(objectId) {
     this.questionService.deleteQuestion(objectId).subscribe((data:Question) => {
       this.questions = this.questions.filter(
@@ -33,15 +36,16 @@ export class QuestionsComponent implements OnInit {
 
   createQuestionDialog(): void {
     const dialogRef = this.dialog.open(DialogExampleComponent, {
-      height: '250px',
+      height: '300px',
       width: '300px',
     });
 
     dialogRef.afterClosed().subscribe((title) => {
-      // tslint:disable-next-line:no-shadowed-variable
-      this.questionService.createQuestion(title).subscribe((title:Question) => {
-        this.ngOnInit();
-      });
+      if (title) {
+        this.questionService.createQuestion(title).subscribe((title:Question) => {
+          this.getAllQuestions();
+        });
+      }
     });
   }
 }
