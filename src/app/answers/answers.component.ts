@@ -1,10 +1,10 @@
-import { DialogAnswerComponent } from './../dialog-answer/dialog-answer.component';
-import { MatDialog } from '@angular/material/dialog';
-import { Component, OnInit } from '@angular/core';
+import {DialogAnswerComponent} from '../dialog-answer/dialog-answer.component';
+import {MatDialog} from '@angular/material/dialog';
+import {Component, OnInit} from '@angular/core';
 
-import { DataService } from './../data.service';
-import { Answer } from '../interfaces';
-import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
+import {DataService} from '../data.service';
+import {Answer} from '../interfaces';
+import {DialogEditComponent} from '../dialog-edit/dialog-edit.component';
 
 @Component({
   selector: 'app-answers',
@@ -14,9 +14,14 @@ import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
 export class AnswersComponent implements OnInit {
   answers: Answer[] = [];
 
-  constructor(private answerService: DataService, public dialog: MatDialog) {}
+  constructor(private answerService: DataService, public dialog: MatDialog) {
+  }
 
   ngOnInit() {
+    this.getAllAnswers();
+  }
+
+  getAllAnswers() {
     this.answerService.getAnswers().subscribe((answers) => {
       this.answers = answers;
     });
@@ -24,20 +29,21 @@ export class AnswersComponent implements OnInit {
 
   createAnswerDialog() {
     let dialogRef = this.dialog.open(DialogAnswerComponent, {
-      height: '250px',
+      height: '300px',
       width: '300px',
     });
 
     dialogRef.afterClosed().subscribe((text) => {
-      this.answerService.createAnswer(text).subscribe((text) => {
-        this.answers = [...this.answers, { ...text }];
-        this.ngOnInit()
-      });
+      if (text) {
+        this.answerService.createAnswer(text).subscribe((text: Answer) => {
+          this.getAllAnswers();
+        });
+      }
     });
   }
 
   deleteAnswer(objectId) {
-    this.answerService.deleteAnswer(objectId).subscribe((data) => {
+    this.answerService.deleteAnswer(objectId).subscribe((data: Answer) => {
       this.answers = this.answers.filter(
         (answer) => answer.objectId !== objectId
       );
@@ -46,21 +52,22 @@ export class AnswersComponent implements OnInit {
   }
 
   editAnswerDialog(answer) {
-  
+
     let dialogRef = this.dialog.open(DialogEditComponent, {
-      height: '250px',
+      height: '300px',
       width: '300px',
     });
 
     dialogRef.afterClosed().subscribe((text) => {
-
-    this.answerService.editAnswers(text, answer.objectId).subscribe((text) => {
-      this.answers = this.answers.filter(
-        ({ objectId }) => answer.objectId !== objectId
-      );
-      this.answers = [...this.answers, { objectId: answer.objectId, ...text }];
-      this.ngOnInit()
-    });
+      if (text) {
+        this.answerService.editAnswers(text, answer.objectId).subscribe((text) => {
+          this.answers = this.answers.filter(
+            ({objectId}) => answer.objectId !== objectId
+          );
+          this.answers = [...this.answers, {objectId: answer.objectId, ...text}];
+          this.getAllAnswers();
+        });
+      }
     })
   }
 }
