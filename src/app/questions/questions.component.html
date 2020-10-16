@@ -18,8 +18,9 @@
         <div class="question-card__title" [routerLink]="['/questions/', question.objectId]"
              routerLinkActive="active"
              [title]="screen">{{question.title}}
+          <div class="question-card__answers">3 answers</div>
+
         </div>
-        <div class="question-card__answers">3 answers</div>
 
         <div class="question-card__btn-group">
           <div class="question-card__vote-box">
