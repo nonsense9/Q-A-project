@@ -25,6 +25,7 @@
     letter-spacing: 0.15px;
     color: #000000;
     margin-bottom: 8px;
+    cursor: pointer;
   }
 
   &__answers {
@@ -91,6 +92,7 @@
   justify-content: center;
   align-items: center;
   margin: 14px 0 12px 0;
+  cursor: pointer;
 }
 
 .questions-route {
@@ -105,7 +107,6 @@
   letter-spacing: 0.4px;
   color: #8797ab;
   margin-bottom: 6px;
-
 }
 
 .question-title {
