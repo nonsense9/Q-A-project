@@ -24,7 +24,7 @@ export class QuestionsComponent implements OnInit {
   }
 
   deleteQuestion(objectId) {
-    this.questionService.deleteQuestion(objectId).subscribe((data) => {
+    this.questionService.deleteQuestion(objectId).subscribe((data:Question) => {
       this.questions = this.questions.filter(
         (question) => question.objectId !== objectId
       );
@@ -39,8 +39,7 @@ export class QuestionsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((title) => {
       // tslint:disable-next-line:no-shadowed-variable
-      this.questionService.createQuestion(title).subscribe((title) => {
-
+      this.questionService.createQuestion(title).subscribe((title:Question) => {
         this.ngOnInit();
       });
     });

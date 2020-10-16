@@ -1,11 +1,6 @@
 .questions-container {
   $bg-color: #ffffff;
-  background-color: $bg-color;
-  width: 580px;
-  height: 131px;
   border-radius: 12px;
-  display: grid;
-  flex-direction: column;
 }
 
 .question-card {
@@ -14,14 +9,12 @@
   $bg-color: #ffffff;
 
   background-color: $bg-color;
-  width: 580px;
-  height: 131px;
   border-radius: 12px;
+  padding: 20px;
   margin-bottom: 12px;
 
 
   &__title {
-    width: 402px;
     height: 19px;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
@@ -31,21 +24,20 @@
     line-height: normal;
     letter-spacing: 0.15px;
     color: #000000;
-    padding: 20px 0 0 20px;
+    margin-bottom: 8px;
   }
 
   &__answers {
     color: $light-text;
     font-size: 10px;
     font-weight: bold;
-    padding: 8px 0 12px 20px;
+    margin-bottom: 12px;
   }
 
   &__btn-group {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 20px 20px 20px;
     .question-card__vote-box {
       display: flex;
     }
@@ -58,7 +50,6 @@
     text-transform: uppercase;
     font-weight: bold;
     align-self: flex-end;
-    padding: 20px;
   }
 
 }
@@ -83,7 +74,6 @@
 }
 
 .background-btn__add {
-  width: 580px;
   height: 44px;
   border-radius: 12px;
   background-color: #e1e5ea;
@@ -109,7 +99,6 @@
 }
 
 .question-title {
-  width: 187px;
   height: 32px;
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
@@ -122,3 +111,7 @@
   white-space: nowrap;
 }
 
+h3 {
+  margin: 0;
+  padding: 0;
+}

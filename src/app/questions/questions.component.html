@@ -1,29 +1,32 @@
-<small class="questions-route">Questions</small>
-
-<div class="question-title">
-  <h3>{{title}}</h3>
-</div>
-
-<div class="background-btn__add">
-  <img src="/assets/add-24-px-2.svg" class="add-24px-2" alt="Add questions">
-  <button class="question-card__btn-add" (click)="createQuestionDialog()">add new question...</button>
-</div>
-
-
-<div *ngIf="questions.length" class="questions-container">
-  <div *ngFor="let question of questions" class="question-card">
-    <div class="question-card__title" [routerLink]="['/questions/', question.objectId]" routerLinkActive="active"
-         [title]="screen">{{question.title}}
+<div class="row">
+  <div class="col-12">
+    <small class="questions-route">Questions</small>
+  </div>
+  <div class="col-12 question-title">
+    <h3>{{title}}</h3>
+  </div>
+  <div class="col-12">
+    <div class="background-btn__add">
+      <img src="/assets/add-24-px-2.svg" class="add-24px-2" alt="Add questions">
+      <button class="question-card__btn-add" (click)="createQuestionDialog()">add new question...</button>
     </div>
-    <div class="question-card__answers">3 answers</div>
-    <div class="question-card__btn-group">
-      <div class="question-card__vote-box">
-        <like-box></like-box>
+  </div>
+
+  <div class="col">
+    <div *ngIf="questions.length" class="questions-container">
+      <div *ngFor="let question of questions" class="col question-card">
+        <div class="question-card__title" [routerLink]="['/questions/', question.objectId]"
+             routerLinkActive="active"
+             [title]="screen">{{question.title}}
+        </div>
+        <div class="question-card__answers">3 answers</div>
+        <div class="question-card__btn-group">
+          <div class="question-card__vote-box">
+            <like-box></like-box>
+          </div>
+          <button class="question-card__del-btn" (click)="deleteQuestion(question.objectId)">delete</button>
+        </div>
       </div>
-      <button class="question-card__del-btn" (click)="deleteQuestion(question.objectId)">delete</button>
     </div>
   </div>
 </div>
-
-
-

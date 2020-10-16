@@ -11,6 +11,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatToolbarModule} from "@angular/material/toolbar";
+
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -21,7 +24,6 @@ import {DialogExampleComponent} from './dialog-example/dialog-example.component'
 import {DialogAnswerComponent} from './dialog-answer/dialog-answer.component';
 import {DialogEditComponent} from './dialog-edit/dialog-edit.component';
 import {LikeComponent} from "./like/like.component";
-import {MatToolbarModule} from "@angular/material/toolbar";
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     MatListModule,
     ReactiveFormsModule,
     MatToolbarModule,
+    MatGridListModule,
     RouterModule.forRoot([
       {path: 'questions', component: QuestionsComponent},
       {path: 'questions/:id', component: AnswersComponent},
