@@ -6,8 +6,8 @@
     <!--    <h3>{{questions.title}}</h3>-->
   </div>
   <div class="col-12">
-    <div class="background-btn__add" (click)="createAnswerDialog()">
-      <img src="/assets/add-24-px-2.svg" class="add-24px-2" alt="Add answers">
+    <div (click)="createAnswerDialog()" class="background-btn__add">
+      <img alt="Add answers" class="add-24px-2" src="/assets/add-24-px-2.svg">
       add new answer...
     </div>
   </div>
@@ -15,8 +15,7 @@
   <div class="col">
     <div *ngIf="answers.length" class="answers-container">
       <div *ngFor="let answer of answers" class="col answer-card">
-        <div class="answer-card__title" [routerLink]="['/answers/', answer.objectId]"
-             routerLinkActive="active">{{answer.text}}
+        <div class="answer-card__title">{{answer.text}}
           <div class="answer-card__answers">3 answers</div>
 
         </div>
@@ -26,8 +25,8 @@
             <like-box></like-box>
           </div>
           <div class="justify-content-center">
-            <button class="answer-card__edit-btn" (click)="editAnswerDialog(answer)">edit</button>
-            <button class="answer-card__del-btn" (click)="deleteAnswer(answer.objectId)">delete</button>
+            <button (click)="editAnswerDialog(answer)" class="answer-card__edit-btn">edit</button>
+            <button (click)="deleteAnswer(answer.objectId)" class="answer-card__del-btn">delete</button>
           </div>
         </div>
       </div>
