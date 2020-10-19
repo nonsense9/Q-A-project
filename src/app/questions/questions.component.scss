@@ -69,26 +69,6 @@
   }
 }
 
-
-.question-card__btn-add {
-  width: 168px;
-  height: 16px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: 1.25px;
-  color: #8797ab;
-  display: inline-flex;
-  white-space: nowrap;
-  border: none;
-  background-color: #e1e5ea;
-  text-transform: uppercase;
-  outline: none;
-}
-
 .background-btn__add {
   height: 44px;
   border-radius: 12px;
@@ -98,6 +78,16 @@
   align-items: center;
   margin: 14px 0 12px 0;
   cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.25px;
+  color: #8797ab;
+  text-transform: uppercase;
+  outline: none;
 }
 
 .questions-route {

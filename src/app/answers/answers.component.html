@@ -1,25 +1,81 @@
-<div>
-  <img src="assets/logo_2020-10-13/arrow-back-24-px.svg">
+<div class="row">
+  <div class="col-12">
+    <small class="answers-route">Answers</small>
+  </div>
+  <div class="col-12 answer-title">
+<!--    <h3>{{questions.title}}</h3>-->
+  </div>
+  <div class="col-12">
+    <div class="background-btn__add" (click)="createAnswerDialog()">
+      <img src="/assets/add-24-px-2.svg" class="add-24px-2" alt="Add answers">
+      add new answer...
+    </div>
+  </div>
+
+  <div class="col">
+    <div *ngIf="answers.length" class="answers-container">
+      <div *ngFor="let answer of answers" class="col answer-card">
+        <div class="answer-card__title" [routerLink]="['/answers/', answer.objectId]"
+             routerLinkActive="active">{{answer.text}}
+          <div class="answer-card__answers">3 answers</div>
+
+        </div>
+
+        <div class="answer-card__btn-group">
+          <div class="answer-card__vote-box">
+            <like-box></like-box>
+          </div>
+          <button class="answer-card__del-btn" (click)="deleteAnswer(answer.objectId)">delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<button mat-stroked-button color="basic" class="answerBtn" type="submit" (click)="createAnswerDialog()">New
-  Answer?
-</button>
 
-<div *ngIf="answers?.length" class="container">
-  <ol *ngFor='let answer of answers'>
-    <li>
-      <a [routerLink]="['/questions/']" routerLinkActive="active" mat-flat-button>
-        <h3>{{answer.text}}</h3>
-      </a>
-      <mat-icon style="cursor:pointer" inline="true" class="material-icons" id="edi" (click)="editAnswerDialog(answer)">
-        create
-      </mat-icon>
-      <mat-icon style="cursor:pointer" inline="true" class="material-icons" id="del"
-                (click)="deleteAnswer(answer.objectId)">delete
-      </mat-icon>
-      <like-box></like-box>
-      <hr>
-    </li>
-  </ol>
-</div>
+<!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="col-12">&ndash;&gt;-->
+<!--&lt;!&ndash;    <small class="questions-route">Questions</small>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="col-12 question-title">&ndash;&gt;-->
+<!--&lt;!&ndash;    <h3>{{title}}</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="col-12">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="background-btn__add" (click)="createQuestionDialog()">&ndash;&gt;-->
+<!--&lt;!&ndash;      <img src="/assets/add-24-px-2.svg" class="add-24px-2" alt="Add questions">&ndash;&gt;-->
+<!--&lt;!&ndash;      <button class="question-card__btn-add">add new question...</button>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+
+<!--<div class="row">-->
+<!--  <div class="col-12">-->
+<!--    <a href="#" class="answers-route">Questions</a>-->
+<!--  </div>-->
+<!--  <div class="col-12 answers-title"></div>-->
+<!--  <div>-->
+<!--    <img src="assets/logo_2020-10-13/arrow-back-24-px.svg">-->
+<!--  </div>-->
+
+<!--  -->
+<!--  <button mat-stroked-button color="basic" class="answers-create__btn" type="submit" (click)="createAnswerDialog()">add-->
+<!--    new answer-->
+<!--  </button>-->
+
+<!--  <div *ngIf="answers?.length" class="container">-->
+<!--    <ol *ngFor='let answer of answers'>-->
+<!--      <li>-->
+<!--        <a [routerLink]="['/questions/']" routerLinkActive="active" mat-flat-button>-->
+<!--          <h3>{{answer.text}}</h3>-->
+<!--        </a>-->
+<!--        <mat-icon style="cursor:pointer" inline="true" class="answers-edit__btn" (click)="editAnswerDialog(answer)">-->
+<!--          create-->
+<!--        </mat-icon>-->
+<!--        <mat-icon style="cursor:pointer" inline="true" class="answers-delete__btn"-->
+<!--                  (click)="deleteAnswer(answer.objectId)">delete-->
+<!--        </mat-icon>-->
+<!--        <like-box></like-box>-->
+<!--        <hr>-->
+<!--      </li>-->
+<!--    </ol>-->
+<!--  </div>-->
+<!--</div>-->
