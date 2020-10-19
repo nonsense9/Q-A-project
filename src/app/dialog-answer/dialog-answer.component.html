@@ -7,7 +7,7 @@
     <textarea rows="5" type="text" formControlName="text" minlength="1" required></textarea>
     <div mat-dialog-actions align="center">
       <button mat-raised-button type="submit" [disabled]="!form.valid">Add</button>
-      <button mat-raised-button (click)="close()">Close</button>
+      <button mat-raised-button mat-dialog-close>Close</button>
     </div>
   </form>
 

@@ -1,7 +1,3 @@
-.container {
-  text-align: center;
-}
-
 small {
   text-align: center;
   padding: 25px;
@@ -10,4 +6,10 @@ small {
 
 button:focus {
   background-color: grey;
+}
+
+textarea {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

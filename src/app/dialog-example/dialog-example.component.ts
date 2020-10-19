@@ -1,5 +1,5 @@
-import {  MatDialogRef } from '@angular/material/dialog';
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MatDialogRef} from '@angular/material/dialog';
 import {
   AbstractControl,
   FormBuilder,
@@ -7,11 +7,10 @@ import {
 } from '@angular/forms';
 
 
-
 @Component({
   selector: 'app-dialog-example',
   templateUrl: './dialog-example.component.html',
-  styleUrls: ['./dialog-example.component.scss'],
+  styleUrls: ['./dialog-example.component.scss']
 })
 export class DialogExampleComponent implements OnInit {
   form: FormGroup;
@@ -19,18 +18,17 @@ export class DialogExampleComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DialogExampleComponent>,
     public fb: FormBuilder,
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
-    this.form =  this.fb.group({
+    this.form = this.fb.group({
       title: ['']
     });
   }
 
   close(): void {
-    if (!this.form) {
     this.dialogRef.close();
-  }
   }
 
 
@@ -39,11 +37,8 @@ export class DialogExampleComponent implements OnInit {
   }
 
   onSubmit() {
-    
     this.dialogRef.close(this.title.value);
-    
   }
-  
 }
 
 

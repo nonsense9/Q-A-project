@@ -1,16 +1,14 @@
 <div>
-  <h2 mat-dialog-title align="center">Enter your question</h2>
+  <h2 align="center" mat-dialog-title>Enter your question</h2>
 </div>
 
-<div class="container">
+<div>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <textarea rows="5" type="text" formControlName="title" minlength="1" required></textarea>
+    <textarea rows="5" type="text" formControlName="title" minlength="1" align="center" required></textarea>
 
     <div mat-dialog-actions align="center">
       <button mat-raised-button type="submit" [disabled]="!form.valid">Add</button>
-      <button mat-raised-button (click)="close()">Close</button>
+      <button mat-raised-button mat-dialog-close>Close</button>
     </div>
   </form>
-
-
 </div>

@@ -1,3 +1,25 @@
-<h1>{{title}}</h1>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <mat-toolbar role="heading" class="background">
+        <img src="assets/logo_2020-10-13/logo.png" class="logo" alt="Logo icon">
+      </mat-toolbar>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <router-outlet></router-outlet>
+    </div>
 
-<router-outlet></router-outlet>
+  </div>
+    <div class="row justify-content-center questions-quantity">
+      <div class="col-6">
+        <div class="questions-counter">No more questions</div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <footer class="navbar-fixed-bottom">©Alexei 2020. All rights reserved</footer>
+      </div>
+    </div>
+</div>

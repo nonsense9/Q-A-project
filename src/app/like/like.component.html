@@ -1,0 +1,27 @@
+<div class="vote-section">
+  <button class="upVote" (click)="likeBtn()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11">
+      <g fill="none" fill-rule="evenodd">
+        <g fill="#4CAF50">
+          <g>
+            <path d="M26 13L32 24 20 24z" transform="translate(-470 -457) translate(430 369) translate(20 75)"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+
+    <span class="up">{{numberOfLikes}}</span>
+  </button>
+  <button class="downVote" (click)="dislikeBtn()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11">
+      <g fill="none" fill-rule="evenodd">
+        <g fill="#F44336">
+          <g>
+            <path d="M26 24L32 13 20 13z" transform="translate(-560 -457) translate(430 369) translate(110 75)"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+    <span class="down">{{numberOfDislikes}}</span>
+  </button>
+</div>

@@ -1,9 +1,9 @@
-import { DialogExampleComponent } from './../dialog-example/dialog-example.component';
-import { DataService } from './../data.service';
-import { Question } from '../interfaces';
+import {DialogExampleComponent} from '../dialog-example/dialog-example.component';
+import {DataService} from '../data.service';
+import {Question} from '../interfaces';
 
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import {Component, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-questions',
@@ -11,18 +11,25 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./questions.component.scss'],
 })
 export class QuestionsComponent implements OnInit {
+  title: string = "Learn about: Angular"
+  screen: string = "Question list item"
   questions: Question[] = [];
 
-  constructor(private questionService: DataService, public dialog: MatDialog) {}
+  constructor(private questionService: DataService, public dialog: MatDialog) {
+  }
 
   ngOnInit() {
+    this.getAllQuestions();
+  }
+
+  getAllQuestions() {
     this.questionService.getQuestions().subscribe((questions) => {
       this.questions = questions;
     });
   }
 
   deleteQuestion(objectId) {
-    this.questionService.deleteQuestion(objectId).subscribe((data) => {
+    this.questionService.deleteQuestion(objectId).subscribe((data: Question) => {
       this.questions = this.questions.filter(
         (question) => question.objectId !== objectId
       );
@@ -31,17 +38,16 @@ export class QuestionsComponent implements OnInit {
 
   createQuestionDialog(): void {
     const dialogRef = this.dialog.open(DialogExampleComponent, {
-      height: '250px',
+      height: '300px',
       width: '300px',
     });
 
     dialogRef.afterClosed().subscribe((title) => {
-      // tslint:disable-next-line:no-shadowed-variable
-      this.questionService.createQuestion(title).subscribe((title) => {
-        // this.questions = [...this.questions, { ...title }];
-
-        this.ngOnInit();
-      });
+      if (title) {
+        this.questionService.createQuestion(title).subscribe((title: Question) => {
+          this.getAllQuestions();
+        });
+      }
     });
   }
 }
