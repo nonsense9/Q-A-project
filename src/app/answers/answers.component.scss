@@ -20,7 +20,6 @@ $bg-color: #ffffff;
 
 
   &__title {
-    height: 19px;
     font-family: $font;
     font-size: 16px;
     font-weight: normal;
@@ -30,6 +29,7 @@ $bg-color: #ffffff;
     letter-spacing: 0.15px;
     color: #000000;
     margin-bottom: 36px;
+    word-break: break-word;
   }
 
   &__answers {
@@ -145,7 +145,7 @@ h3 {
 
 .answers-counter {
   height: 14px;
-  font-family: 'Roboto', sans-serif;
+  font-family: $font;
   font-size: 12px;
   font-weight: normal;
   font-stretch: normal;

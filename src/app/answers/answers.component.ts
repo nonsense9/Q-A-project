@@ -14,6 +14,7 @@ import {DialogEditComponent} from '../dialog-edit/dialog-edit.component';
 export class AnswersComponent implements OnInit {
   answers: Answer[] = [];
 
+
   constructor(private answerService: DataService, public dialog: MatDialog) {
   }
 
@@ -42,6 +43,7 @@ export class AnswersComponent implements OnInit {
     });
   }
 
+
   deleteAnswer(objectId) {
     this.answerService.deleteAnswer(objectId).subscribe((data: Answer) => {
       this.answers = this.answers.filter(
@@ -60,7 +62,7 @@ export class AnswersComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((text) => {
       if (text) {
-        this.answerService.editAnswers(text, answer.objectId).subscribe((text) => {
+        this.answerService.editAnswers(text, answer.objectId).subscribe((text:Answer) => {
           this.answers = this.answers.filter(
             ({objectId}) => answer.objectId !== objectId
           );
