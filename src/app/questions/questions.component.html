@@ -6,8 +6,8 @@
     <h3>{{title}}</h3>
   </div>
   <div class="col-12">
-    <div class="background-btn__add" (click)="createQuestionDialog()">
-      <img src="/assets/add-24-px-2.svg" class="add-24px-2" alt="Add questions">
+    <div (click)="createQuestionDialog()" class="background-btn__add">
+      <img alt="Add questions" class="add-24px-2" src="/assets/add-24-px-2.svg">
       add new question...
     </div>
   </div>
@@ -15,18 +15,17 @@
   <div class="col">
     <div *ngIf="questions.length" class="questions-container">
       <div *ngFor="let question of questions" class="col question-card">
-        <div class="question-card__title" [routerLink]="['/questions/', question.objectId]"
-             routerLinkActive="active"
-             [title]="screen">{{question.title}}
-          <div class="question-card__answers">2 Answers</div>
-
+        <div [routerLink]="['/questions/', question.objectId]" [title]="screen"
+             class="question-card__title"
+             routerLinkActive="active">{{question.title}}
+          <div class="question-card__answers">{{questions.length}} Answers</div>
         </div>
 
         <div class="question-card__btn-group">
           <div class="question-card__vote-box">
             <like-box></like-box>
           </div>
-          <button class="question-card__del-btn" (click)="deleteQuestion(question.objectId)">delete</button>
+          <button (click)="deleteQuestion(question.objectId)" class="question-card__del-btn">delete</button>
         </div>
       </div>
     </div>
@@ -38,4 +37,5 @@
     <div class="questions-counter">No more questions</div>
   </div>
 </div>
+
 
