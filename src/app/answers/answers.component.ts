@@ -5,6 +5,7 @@ import {Component, OnInit} from '@angular/core';
 import {DataService} from '../data.service';
 import {Answer} from '../interfaces';
 import {DialogEditComponent} from '../dialog-edit/dialog-edit.component';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-answers',
@@ -13,16 +14,20 @@ import {DialogEditComponent} from '../dialog-edit/dialog-edit.component';
 })
 export class AnswersComponent implements OnInit {
   answers: Answer[] = [];
+  questionId: string
 
-  constructor(private answerService: DataService, public dialog: MatDialog) {
+  constructor(private answerService: DataService, public dialog: MatDialog, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.getAllAnswers();
+    this.route.params.subscribe((params) => {
+      this.questionId = params.id
+      this.getAllAnswers();
+    })
   }
 
   getAllAnswers() {
-    this.answerService.getAnswers().subscribe((answers) => {
+    this.answerService.getAnswers(this.questionId).subscribe((answers: Answer[]) => {
       this.answers = answers;
     });
   }
@@ -35,19 +40,19 @@ export class AnswersComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((text) => {
       if (text) {
-        this.answerService.createAnswer(text).subscribe((text: Answer) => {
+        this.answerService.createAnswer(text, this.questionId).subscribe(() => {
           this.getAllAnswers();
         });
       }
     });
   }
 
+
   deleteAnswer(objectId) {
-    this.answerService.deleteAnswer(objectId).subscribe((data: Answer) => {
+    this.answerService.deleteAnswer(objectId).subscribe(() => {
       this.answers = this.answers.filter(
-        (answer) => answer.objectId !== objectId
+        (answer: Answer) => answer.objectId !== objectId
       );
-      console.log(objectId);
     });
   }
 
@@ -60,7 +65,7 @@ export class AnswersComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((text) => {
       if (text) {
-        this.answerService.editAnswers(text, answer.objectId).subscribe((text) => {
+        this.answerService.editAnswers(text, answer.objectId).subscribe((text: Answer) => {
           this.answers = this.answers.filter(
             ({objectId}) => answer.objectId !== objectId
           );

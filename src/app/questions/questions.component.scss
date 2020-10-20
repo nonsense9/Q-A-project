@@ -1,13 +1,14 @@
+$light-text: #aaaaaa;
+$bg-color: #ffffff;
+$font: "Roboto", sans-serif;
+
+
 .questions-container {
   $bg-color: #ffffff;
   border-radius: 12px;
 }
 
 .question-card {
-
-  $light-text: #aaaaaa;
-  $bg-color: #ffffff;
-
   background-color: $bg-color;
   border-radius: 12px;
   padding: 20px;
@@ -16,7 +17,7 @@
 
   &__title {
     height: 19px;
-    font-family: 'Roboto', sans-serif;
+    font-family: $font;
     font-size: 16px;
     font-weight: normal;
     font-stretch: normal;
@@ -31,7 +32,7 @@
 
   &__answers {
     color: $light-text;
-    font-family: "Roboto", sans-serif;
+    font-family: $font;
     font-size: 14px;
     font-weight: 500;
     font-stretch: normal;
@@ -78,7 +79,7 @@
   align-items: center;
   margin: 14px 0 12px 0;
   cursor: pointer;
-  font-family: 'Roboto', sans-serif;
+  font-family: $font;
   font-size: 14px;
   font-weight: 500;
   font-stretch: normal;
@@ -93,7 +94,7 @@
 .questions-route {
   width: 58px;
   height: 14px;
-  font-family: 'Roboto', sans-serif;
+  font-family: $font;
   font-size: 12px;
   font-weight: normal;
   font-stretch: normal;
@@ -106,7 +107,7 @@
 
 .question-title {
   height: 32px;
-  font-family: 'Roboto', sans-serif;
+  font-family: $font;
   font-size: 20px;
   font-weight: 500;
   font-stretch: normal;
@@ -121,3 +122,19 @@ h3 {
   margin: 0;
   padding: 0;
 }
+
+.questions-counter {
+  height: 14px;
+  font-family: $font;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.4px;
+  text-align: center;
+  color: $light-text;
+  margin-bottom: 463px;
+  margin-top: 24px;
+}
+

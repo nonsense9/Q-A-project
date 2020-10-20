@@ -1,5 +1,5 @@
 $light-text: #aaaaaa;
-$font-style: 'Roboto', sans-serif;
+$font-family: 'Roboto', sans-serif;
 
 .background {
   height: 56px;
@@ -24,7 +24,7 @@ $font-style: 'Roboto', sans-serif;
 
 footer {
   height: 14px;
-  font-family: $font-style;
+  font-family: $font-family;
   font-size: 12px;
   font-weight: normal;
   font-stretch: normal;
@@ -38,7 +38,7 @@ footer {
 
 .questions-counter {
   height: 14px;
-  font-family: $font-style;
+  font-family: $font-family;
   font-size: 12px;
   font-weight: normal;
   font-stretch: normal;
