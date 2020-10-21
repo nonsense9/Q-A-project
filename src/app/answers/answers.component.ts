@@ -1,11 +1,11 @@
 import {DialogAnswerComponent} from '../dialog-answer/dialog-answer.component';
 import {MatDialog} from '@angular/material/dialog';
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 import {DataService} from '../data.service';
-import {Answer} from '../interfaces';
+import {Answer, Question} from '../interfaces';
 import {DialogEditComponent} from '../dialog-edit/dialog-edit.component';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-answers',
@@ -14,9 +14,23 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class AnswersComponent implements OnInit {
   answers: Answer[] = [];
+
   questionId: string
 
-  constructor(private answerService: DataService, public dialog: MatDialog, private route: ActivatedRoute) {
+  question: Question;
+
+  constructor(
+    private answerService: DataService,
+    public dialog: MatDialog,
+    private route: ActivatedRoute,
+    private router: Router,
+  ) {
+    const state = this.router.getCurrentNavigation().extras.state;
+    if (!state) {
+      this.router.navigateByUrl('/questions')
+      return
+    }
+    this.question = state.question
   }
 
   ngOnInit() {
@@ -39,14 +53,13 @@ export class AnswersComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((text) => {
-      if (text) {
-        this.answerService.createAnswer(text, this.questionId).subscribe(() => {
+      if (text.trim()) {
+        this.answerService.createAnswer(text, this.questionId, this.question.answerLength + 1).subscribe(() => {
           this.getAllAnswers();
         });
       }
     });
   }
-
 
   deleteAnswer(objectId) {
     this.answerService.deleteAnswer(objectId).subscribe(() => {
@@ -57,14 +70,13 @@ export class AnswersComponent implements OnInit {
   }
 
   editAnswerDialog(answer) {
-
     let dialogRef = this.dialog.open(DialogEditComponent, {
       height: '300px',
       width: '300px',
     });
 
     dialogRef.afterClosed().subscribe((text) => {
-      if (text) {
+      if (text.trim()) {
         this.answerService.editAnswers(text, answer.objectId).subscribe((text: Answer) => {
           this.answers = this.answers.filter(
             ({objectId}) => answer.objectId !== objectId

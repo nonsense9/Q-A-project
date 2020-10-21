@@ -4,6 +4,7 @@ import {Question} from '../interfaces';
 
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-questions',
@@ -11,15 +12,27 @@ import {MatDialog} from '@angular/material/dialog';
   styleUrls: ['./questions.component.scss'],
 })
 export class QuestionsComponent implements OnInit {
-  title: string = "Learn about: Angular"
-  screen: string = "Question list item"
-  questions: Question[] = [];
 
-  constructor(private questionService: DataService, public dialog: MatDialog) {
+  title: string = "Learn about: Angular"
+
+  questions: Question[] = []
+
+  answerLength: number = 0
+
+  constructor(
+    private questionService: DataService,
+    public dialog: MatDialog,
+    public router: Router
+  ) {
   }
 
   ngOnInit() {
     this.getAllQuestions();
+  }
+
+
+  navigateAnswers(question: Question) {
+    this.router.navigateByUrl('/questions/' + question.objectId, { state: { question } });
   }
 
   getAllQuestions() {
@@ -29,7 +42,7 @@ export class QuestionsComponent implements OnInit {
   }
 
   deleteQuestion(objectId) {
-    this.questionService.deleteQuestion(objectId).subscribe((data: Question) => {
+    this.questionService.deleteQuestion(objectId).subscribe(() => {
       this.questions = this.questions.filter(
         (question) => question.objectId !== objectId
       );
@@ -43,8 +56,8 @@ export class QuestionsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((title) => {
-      if (title) {
-        this.questionService.createQuestion(title).subscribe((title: Question) => {
+      if (title.trim()) {
+        this.questionService.createQuestion(title).subscribe(() => {
           this.getAllQuestions();
         });
       }

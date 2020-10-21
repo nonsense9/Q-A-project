@@ -1,9 +1,8 @@
 <div class="row">
-  <div class="col-12">
+  <div class="col router-name" *ngIf="question">
     <a [routerLink]="['/questions/']" class="answers-route">Questions</a>
-    / questionLinkName
+    / {{question.title}}
   </div>
-
   <div class="col-12">
     <div (click)="createAnswerDialog()" class="background-btn__add">
       <img alt="Add answers" class="add-24px-2" src="/assets/add-24-px-2.svg">
