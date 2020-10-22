@@ -1,36 +1,38 @@
-<div class="row">
-  <div class="col router-name" *ngIf="question">
-    <a [routerLink]="['/questions/']" class="answers-route">Questions</a>
-    / {{question.title}}
-  </div>
-  <div class="col-12">
-    <div (click)="createAnswerDialog()" class="background-btn__add">
-      <img alt="Add answers" class="add-24px-2" src="/assets/add-24-px-2.svg">
-      add new answer...
+<div class="container-fluid">
+  <div class="row">
+    <div class="col router-name">
+      <a [routerLink]="['/questions/']" class="answers-route">Questions</a>
+      / {{question.title}}
     </div>
-  </div>
+    <div class="col-12">
+      <div (click)="createAnswerDialog()" class="background-btn__add">
+        <img alt="Add answers" class="add-24px-2" src="/assets/add-24-px-2.svg">
+        add new answer...
+      </div>
+    </div>
 
-  <div class="col">
-    <div *ngIf="answers.length" class="answers-container">
-      <div *ngFor="let answer of answers" class="col answer-card">
-        <div class="answer-card__title">{{answer.text}}</div>
+    <div class="col">
+      <div *ngIf="answers.length" class="answers-container">
+        <div *ngFor="let answer of answers" class="col answer-card">
+          <div class="answer-card__title">{{answer.text}}</div>
 
-        <div class="answer-card__btn-group">
-          <div class="answer-card__vote-box">
-            <like-box></like-box>
-          </div>
-          <div class="justify-content-center">
-            <button (click)="editAnswerDialog(answer)" class="answer-card__edit-btn">edit</button>
-            <button (click)="deleteAnswer(answer.objectId)" class="answer-card__del-btn">delete</button>
+          <div class="answer-card__btn-group">
+            <div class="answer-card__vote-box">
+              <like-box></like-box>
+            </div>
+            <div class="justify-content-center">
+              <button (click)="editAnswerDialog(answer)" class="answer-card__edit-btn">edit</button>
+              <button (click)="deleteAnswer(answer.objectId)" class="answer-card__del-btn">delete</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="row justify-content-center answers-quantity">
-  <div class="col-6">
-    <div class="answers-counter">No more answers</div>
+  <div class="row justify-content-center answers-quantity">
+    <div class="col-6">
+      <div class="answers-counter">No more answers</div>
+    </div>
   </div>
 </div>

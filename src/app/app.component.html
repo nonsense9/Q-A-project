@@ -2,7 +2,12 @@
   <div class="row justify-content-center">
     <div class="col-6">
       <mat-toolbar class="background" role="heading">
-        <img alt="Logo icon" class="logo" src="assets/logo_2020-10-13/logo.png">
+        <div [routerLink]="['/questions/']" class="col-3 arrow-btn ">
+          <a><img src="assets/logo_2020-10-13/arrow-back-24-px.svg"></a>
+        </div>
+        <div class="col-6">
+          <img alt="Logo icon" class="logo" src="assets/logo_2020-10-13/logo.png">
+        </div>
       </mat-toolbar>
     </div>
   </div>
