@@ -1,10 +1,11 @@
 import {DialogExampleComponent} from '../dialog-example/dialog-example.component';
 import {DataService} from '../data.service';
-import {Question} from '../interfaces';
+import {Answer, Question} from '../interfaces';
 
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {Router} from "@angular/router";
+import {DialogEditComponent} from "../dialog-edit/dialog-edit.component";
 
 @Component({
   selector: 'app-questions',
@@ -32,7 +33,8 @@ export class QuestionsComponent implements OnInit {
 
 
   navigateAnswers(question: Question) {
-    this.router.navigateByUrl('/questions/' + question.objectId, { state: { question } });
+    this.router.navigateByUrl('/questions/' + question.objectId, {state: {question}});
+    this.getAllQuestions();
   }
 
   getAllQuestions() {
@@ -63,4 +65,25 @@ export class QuestionsComponent implements OnInit {
       }
     });
   }
+
+  editQuestionDialog(question) {
+    let dialogRef = this.dialog.open(DialogEditComponent, {
+      height: '300px',
+      width: '300px',
+    });
+
+    dialogRef.afterClosed().subscribe((title) => {
+      if (title.trim()) {
+        this.questionService.editQuestions(title, question.objectId).subscribe((title: Question) => {
+          this.questions = this.questions.filter(
+            ({objectId}) => question.objectId !== objectId
+          );
+          this.questions = [...this.questions, {objectId: question.objectId, ...title}];
+          this.getAllQuestions();
+        });
+      }
+    })
+  }
 }
+
+

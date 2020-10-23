@@ -1,39 +1,37 @@
 <div class="row">
-  <div class="col-12">
-    <small class="questions-route">Questions</small>
-  </div>
-  <div class="col-12 question-title">
-    <h3>{{title}}</h3>
-  </div>
-  <div class="col-12">
-    <div (click)="createQuestionDialog()" class="background-btn__add">
-      <img alt="Add questions" class="add-24px-2" src="/assets/add-24-px-2.svg">
-      add new question...
-    </div>
-  </div>
+  <small class="questions-route">Questions</small>
+</div>
+<div class="row">
+  <h3 class="question-title">{{title}}</h3>
+</div>
+<div class="row">
+  <button (click)="createQuestionDialog()" class="background-btn__add">
+    <img alt="Add questions" class="add-24px-2" src="/assets/add-24-px-2.svg">
+    add new question...
+  </button>
+</div>
 
-  <div class="col">
-    <div *ngIf="questions" class="questions-container">
-      <div *ngFor="let question of questions" class="col question-card">
-        <div (click)="navigateAnswers(question)"  class="question-card__title"
-             routerLinkActive="active">{{question.title}}
-          <div class="question-card__answers">{{question.answerLength}} Answers</div>
-        </div>
-        <div class="question-card__btn-group">
-          <div class="question-card__vote-box">
-            <like-box></like-box>
-          </div>
-          <button (click)="deleteQuestion(question.objectId)" class="question-card__del-btn">delete</button>
-        </div>
+<div *ngIf="questions" class="row questions-container">
+  <div *ngFor="let question of questions" class="col-12 question-card">
+    <div (click)="navigateAnswers(question)" class="question-card__title"
+         routerLinkActive="active">
+      <h6>{{question.title}}</h6>
+      <div class="question-card__answers">{{question.answerLength}} Answers</div>
+    </div>
+    <div class="row question-card__btn-group">
+      <div class="col-xs-12 col">
+        <like-box></like-box>
+      </div>
+      <div class="d-flex justify-content-end col-xs-12 col">
+        <button (click)="editQuestionDialog(question)" class="question-card__edit-btn card-btns">edit</button>
+        <button (click)="deleteQuestion(question.objectId)" class="question-card__del-btn card-btns">delete</button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="row justify-content-center questions-quantity">
+<div class="row justify-content-center">
   <div class="col-6">
     <div class="questions-counter">No more questions</div>
   </div>
 </div>
-
-

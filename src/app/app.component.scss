@@ -6,7 +6,6 @@ $font-family: 'Roboto', sans-serif;
   border-radius: 0 0 12px 12px;
   background-color: #333333;
   display: flex;
-  justify-content: space-around;
   align-items: center;
   margin-bottom: 48px;
 }
@@ -15,6 +14,9 @@ $font-family: 'Roboto', sans-serif;
   width: 48px;
   height: 48px;
   object-fit: contain;
+  align-self: center;
+  display: flex;
+  margin: 0 auto;
 }
 
 .container-fluid {
@@ -54,4 +56,5 @@ footer {
 .arrow-btn{
   outline: none;
   cursor: pointer;
+  padding: 0;
 }

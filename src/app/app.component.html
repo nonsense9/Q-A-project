@@ -1,18 +1,15 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row justify-content-center">
-    <div class="col-6">
-      <mat-toolbar class="background" role="heading">
-        <div [routerLink]="['/questions/']" class="col-3 arrow-btn ">
-          <a><img src="assets/logo_2020-10-13/arrow-back-24-px.svg"></a>
-        </div>
-        <div class="col-6">
-          <img alt="Logo icon" class="logo" src="assets/logo_2020-10-13/logo.png">
-        </div>
-      </mat-toolbar>
+    <div class="col-xs-12 col-md-6 background" role="heading">
+      <div class="col">
+        <img class="arrow-btn" [routerLink]="['/questions/']" src="assets/logo_2020-10-13/arrow-back-24-px.svg">
+      </div>
+      <div class="col justify-content-center"><img alt="Logo icon" class="logo" src="assets/logo_2020-10-13/logo.png"></div>
+      <div class="col"></div>
     </div>
   </div>
   <div class="row justify-content-center">
-    <div class="col-6">
+    <div class="col-xs-12 col-md-6">
       <router-outlet></router-outlet>
     </div>
 

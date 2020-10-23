@@ -53,8 +53,9 @@ export class AnswersComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((text) => {
-      if (text.trim()) {
-        this.answerService.createAnswer(text, this.questionId, this.question.answerLength + 1).subscribe(() => {
+      if (text && text.trim()) {
+        this.question.answerLength = this.question.answerLength + 1
+        this.answerService.createAnswer(text, this.questionId, this.question.answerLength).subscribe(() => {
           this.getAllAnswers();
         });
       }
@@ -62,10 +63,11 @@ export class AnswersComponent implements OnInit {
   }
 
   deleteAnswer(objectId) {
-    this.answerService.deleteAnswer(objectId).subscribe(() => {
+    this.question.answerLength = this.question.answerLength - 1
+    this.answerService.deleteAnswer(objectId, this.question.objectId, this.question.answerLength).subscribe(() => {
       this.answers = this.answers.filter(
-        (answer: Answer) => answer.objectId !== objectId
-      );
+        (answer: Answer) => answer.objectId !== objectId)
+      this.getAllAnswers()
     });
   }
 

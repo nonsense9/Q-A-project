@@ -49,7 +49,7 @@ export class DataService {
   public createQuestion(title: string): Observable<Question> {
     return this.http.post<Question>(
       `${this.REST_API_SERVER}/Question`,
-      {title, answerLength:0},
+      {title, answerLength: 0},
       this.headers
     );
   }
@@ -58,9 +58,17 @@ export class DataService {
     this.updateQuestion(questionId, answerLength).subscribe()
     return this.http.post<Answer>(
       `${this.REST_API_SERVER}/Answer`,
-      {text, questionId},
+      {text, questionId, answerLength},
       this.headers
     );
+  }
+
+  public editQuestions(title, objectId): Observable<Question> {
+    return this.http.put<Question>(
+      `${this.REST_API_SERVER}/Question/${objectId}`,
+      {title},
+      this.headers
+    )
   }
 
   public editAnswers(text, objectId): Observable<Answer> {
@@ -71,10 +79,10 @@ export class DataService {
     );
   }
 
-  public updateQuestion(objectId, answerLength): Observable<Answer> {
+  public updateQuestion(objectId: string, answerLength: number): Observable<Answer> {
     return this.http.put<Answer>(
       `${this.REST_API_SERVER}/Question/${objectId}`,
-      { answerLength },
+      {answerLength},
       this.headers
     );
   }
@@ -86,7 +94,8 @@ export class DataService {
     );
   }
 
-  public deleteAnswer(objectId: string) {
+  public deleteAnswer(objectId: string, questionId: string, answerLength: number) {
+    this.updateQuestion(questionId, answerLength).subscribe()
     return this.http.delete<Answer>(
       `${this.REST_API_SERVER}/Answer/${objectId}`,
       this.headers
