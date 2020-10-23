@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import {Question, Answer} from './interfaces';
+import { Question, Answer } from './interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +28,8 @@ export class DataService {
       .get<{
         results: Question[];
       }>(`${this.REST_API_SERVER}/Question`, this.headers)
-      .pipe(map((res: { results: Question[] }) => res.results));
+      .pipe(map((res: { results: Question[] }) => res.results)); 
+      debugger     
   }
 
   public getAnswers(questionId: string): Observable<Answer[]> {
@@ -49,32 +50,32 @@ export class DataService {
   public createQuestion(title: string): Observable<Question> {
     return this.http.post<Question>(
       `${this.REST_API_SERVER}/Question`,
-      {title, answerLength: 0},
+      { title, answerLength: 0 },
       this.headers
     );
   }
 
-  public createAnswer(text: string, questionId: string, answerLength): Observable<Answer> {
+  public createAnswer(text: string, questionId: string, answerLength: number): Observable<Answer> {
     this.updateQuestion(questionId, answerLength).subscribe()
     return this.http.post<Answer>(
       `${this.REST_API_SERVER}/Answer`,
-      {text, questionId, answerLength},
+      { text, questionId, answerLength },
       this.headers
     );
   }
 
-  public editQuestions(title, objectId): Observable<Question> {
+  public editQuestions(title: string, objectId: string): Observable<Question> {
     return this.http.put<Question>(
       `${this.REST_API_SERVER}/Question/${objectId}`,
-      {title},
+      { title },
       this.headers
     )
   }
 
-  public editAnswers(text, objectId): Observable<Answer> {
+  public editAnswers(text: string, objectId: string): Observable<Answer> {
     return this.http.put<Answer>(
       `${this.REST_API_SERVER}/Answer/${objectId}`,
-      {text},
+      { text },
       this.headers
     );
   }
@@ -82,7 +83,7 @@ export class DataService {
   public updateQuestion(objectId: string, answerLength: number): Observable<Answer> {
     return this.http.put<Answer>(
       `${this.REST_API_SERVER}/Question/${objectId}`,
-      {answerLength},
+      { answerLength },
       this.headers
     );
   }

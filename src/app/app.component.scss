@@ -19,9 +19,9 @@ $font-family: 'Roboto', sans-serif;
   margin: 0 auto;
 }
 
-.container-fluid {
-  min-height: 100%;
-  flex: 1 0 auto;
+.container {
+  max-width: 580px;
+  width: 100%;
 }
 
 footer {
