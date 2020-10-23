@@ -10,7 +10,6 @@ export interface Answer {
   objectId: string;
   text: string;
   questionId: string;
-  questionTitle: string;
   upVote: number;
   downVote: number;
 }

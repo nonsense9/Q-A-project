@@ -1,10 +1,9 @@
 <div class="row router-name">
-  <a [routerLink]="['/questions/']" class="answers-route">Questions</a>
-  / {{question.title}}
+  <a [routerLink]="['/questions/']" class="answers-route">Questions</a> / {{question.title}}
 </div>
 
 <div class="row mt-2">
-  <h3 class="col question-title">{{question.title}}</h3>
+  <h3 class="question-title">{{question.title}}</h3>
 </div>
 <div class="row">
   <button (click)="createAnswerDialog()" class="background-btn__add">
@@ -12,7 +11,6 @@
     add new answer...
   </button>
 </div>
-
 <div *ngIf="answers" class="row">
   <div *ngFor="let answer of answers" class="col-12 answer-card">
     <div class="answer-card__title">
@@ -23,7 +21,7 @@
       <div class="col-xs-12 col">
         <like-box></like-box>
       </div>
-      <div class="d-flex justify-content-start col">
+      <div class="d-flex justify-content-end col">
         <button (click)="editAnswerDialog(answer)" class="answer-card__edit-btn card-btns">edit</button>
         <button (click)="deleteAnswer(answer.objectId)" class="answer-card__del-btn card-btns">delete</button>
       </div>

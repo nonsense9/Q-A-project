@@ -54,7 +54,7 @@ export class AnswersComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((text) => {
       if (text && text.trim()) {
-        this.question.answerLength = this.question.answerLength + 1
+        this.question.answerLength += 1
         this.answerService.createAnswer(text, this.questionId, this.question.answerLength).subscribe(() => {
           this.getAllAnswers();
         });

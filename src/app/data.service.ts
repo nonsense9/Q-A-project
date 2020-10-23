@@ -28,8 +28,7 @@ export class DataService {
       .get<{
         results: Question[];
       }>(`${this.REST_API_SERVER}/Question`, this.headers)
-      .pipe(map((res: { results: Question[] }) => res.results)); 
-      debugger     
+      .pipe(map((res: { results: Question[] }) => res.results));
   }
 
   public getAnswers(questionId: string): Observable<Answer[]> {
@@ -103,3 +102,4 @@ export class DataService {
     );
   }
 }
+
