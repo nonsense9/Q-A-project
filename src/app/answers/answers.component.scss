@@ -29,6 +29,20 @@ $bg-color: #ffffff;
   text-decoration: none;
 }
 
+.question-title {
+  height: 32px;
+  font-family: $font;
+  font-size: 20px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.6;
+  letter-spacing: normal;
+  color: #000000;
+  white-space: nowrap;
+
+}
+
 .background-btn__add {
   width: 100%;
   border-radius: 12px;
@@ -44,11 +58,6 @@ $bg-color: #ffffff;
   text-transform: uppercase;
   border: none;
   outline: none;
-}
-
-.answers-container {
-  $bg-color: #ffffff;
-  border-radius: 12px;
 }
 
 .answer-card {

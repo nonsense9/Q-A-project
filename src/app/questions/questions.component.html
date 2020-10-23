@@ -11,10 +11,9 @@
   </button>
 </div>
 
-<div *ngIf="questions" class="row questions-container">
+<div *ngIf="questions" class="row">
   <div *ngFor="let question of questions" class="col-12 question-card">
-    <div (click)="navigateAnswers(question)" class="question-card__title"
-         routerLinkActive="active">
+    <div (click)="navigateAnswers(question)" class="question-card__title" routerLinkActive="active">
       <h6>{{question.title}}</h6>
       <div class="question-card__answers">{{question.answerLength}} Answers</div>
     </div>

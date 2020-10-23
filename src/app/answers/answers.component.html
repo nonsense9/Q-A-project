@@ -2,6 +2,10 @@
   <a [routerLink]="['/questions/']" class="answers-route">Questions</a>
   / {{question.title}}
 </div>
+
+<div class="row mt-2">
+  <h3 class="question-title">{{question.title}}</h3>
+</div>
 <div class="row">
   <button (click)="createAnswerDialog()" class="background-btn__add">
     <img alt="Add answers" class="add-24px-2" src="/assets/add-24-px-2.svg">
@@ -9,7 +13,7 @@
   </button>
 </div>
 
-<div *ngIf="answers" class="row answers-container">
+<div *ngIf="answers" class="row">
   <div *ngFor="let answer of answers" class="col-12 answer-card">
     <div class="answer-card__title">
       <h6>{{answer.text}}</h6>
