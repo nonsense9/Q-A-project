@@ -2,7 +2,7 @@ import {DialogExampleComponent} from '../dialog-example/dialog-example.component
 import {DataService} from '../data.service';
 import {Answer, Question} from '../interfaces';
 
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {Router} from "@angular/router";
 import {DialogEditComponent} from "../dialog-edit/dialog-edit.component";
@@ -19,6 +19,12 @@ export class QuestionsComponent implements OnInit {
   questions: Question[] = []
 
   answerLength: number = 0
+
+  upVotes: number = 0
+
+  downVotes: number = 0
+
+
 
   constructor(
     private questionService: DataService,
@@ -58,7 +64,7 @@ export class QuestionsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((title) => {
-      if (title.trim()) {
+      if (title && title.trim()) {
         this.questionService.createQuestion(title).subscribe(() => {
           this.getAllQuestions();
         });
@@ -73,7 +79,7 @@ export class QuestionsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((title) => {
-      if (title.trim()) {
+      if (title && title.trim()) {
         this.questionService.editQuestions(title, question.objectId).subscribe((title: Question) => {
           this.questions = this.questions.filter(
             ({objectId}) => question.objectId !== objectId
@@ -83,6 +89,16 @@ export class QuestionsComponent implements OnInit {
         });
       }
     })
+  }
+
+  likeBtn(objectId: string) {
+    this.upVotes += 1
+    this.questionService.updateQuestion(objectId, this.answerLength, this.upVotes)
+  }
+
+  dislikeBtn(objectId: string) {
+
+    this.downVotes++
   }
 }
 

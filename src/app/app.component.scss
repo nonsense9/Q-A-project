@@ -1,24 +1,6 @@
 $light-text: #aaaaaa;
 $font-family: 'Roboto', sans-serif;
 
-.background {
-  height: 56px;
-  border-radius: 0 0 12px 12px;
-  background-color: #333333;
-  display: flex;
-  align-items: center;
-  margin-bottom: 48px;
-}
-
-.logo {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  align-self: center;
-  display: flex;
-  margin: 0 auto;
-}
-
 .container {
   max-width: 580px;
   width: 100%;
@@ -36,25 +18,4 @@ footer {
   color: $light-text;
   text-align: center;
   margin-bottom: 48px;
-}
-
-.questions-counter {
-  height: 14px;
-  font-family: $font-family;
-  font-size: 12px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: 0.4px;
-  text-align: center;
-  color: $light-text;
-  margin-bottom: 463px;
-  margin-top: 24px;
-}
-
-.arrow-btn{
-  outline: none;
-  cursor: pointer;
-  padding: 0;
 }

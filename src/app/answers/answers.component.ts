@@ -19,6 +19,9 @@ export class AnswersComponent implements OnInit {
 
   question: Question;
 
+  upVotes: number = 0
+  downVotes: number = 0
+
   constructor(
     private answerService: DataService,
     public dialog: MatDialog,
@@ -63,8 +66,8 @@ export class AnswersComponent implements OnInit {
   }
 
   deleteAnswer(objectId) {
-    this.question.answerLength = this.question.answerLength - 1
-    this.answerService.deleteAnswer(objectId, this.question.objectId, this.question.answerLength).subscribe(() => {
+    this.question.answerLength -= 1
+    this.answerService.deleteAnswer(objectId, this.question.objectId, this.question.answerLength, this.upVotes, this.downVotes).subscribe(() => {
       this.answers = this.answers.filter(
         (answer: Answer) => answer.objectId !== objectId)
       this.getAllAnswers()
@@ -78,7 +81,7 @@ export class AnswersComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((text) => {
-      if (text.trim()) {
+      if (text && text.trim()) {
         this.answerService.editAnswers(text, answer.objectId).subscribe((text: Answer) => {
           this.answers = this.answers.filter(
             ({objectId}) => answer.objectId !== objectId
@@ -88,6 +91,17 @@ export class AnswersComponent implements OnInit {
         });
       }
     })
+  }
+
+  likeBtn(objectId) {
+    this.upVotes += 1
+    this.answerService.updateQuestion(objectId, this.question.answerLength, this.upVotes, this.downVotes)
+
+
+  }
+
+  dislikeBtn(objectId) {
+    this.downVotes++
   }
 }
 
