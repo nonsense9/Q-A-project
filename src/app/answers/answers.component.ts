@@ -103,5 +103,17 @@ export class AnswersComponent implements OnInit {
   dislikeBtn(objectId) {
     this.downVotes++
   }
+
+  editQuestionDialog(question: Question) {
+
+  }
+
+  deleteQuestion(objectId: string) {
+    this.answerService.deleteQuestion(this.question.objectId).subscribe(() => {
+      this.router.navigateByUrl('/questions')
+    })
+  }
 }
+
+
 

@@ -25,7 +25,7 @@ $bg-color: #ffffff;
   font-style: normal;
   line-height: normal;
   letter-spacing: 0.4px;
-  margin-bottom: 6px;
+  margin: 0 8px 6px 0;
   text-decoration: none;
 }
 
@@ -107,6 +107,17 @@ $bg-color: #ffffff;
   }
 }
 
+.question-card {
+  &__edit-btn {
+    color: #2196f3;
+  }
+
+  &__del-btn {
+    color: $light-text;
+
+  }
+}
+
 .card-btns {
   background-color: transparent;
   text-transform: uppercase;
@@ -170,4 +181,9 @@ $bg-color: #ffffff;
   .down {
     color: #f44336;
   }
+}
+
+.question-title {
+  flex: auto;
+  margin: 0;
 }
