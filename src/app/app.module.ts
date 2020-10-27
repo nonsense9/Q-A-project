@@ -23,7 +23,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DialogExampleComponent} from './dialog-example/dialog-example.component';
 import {DialogAnswerComponent} from './dialog-answer/dialog-answer.component';
 import {DialogEditComponent} from './dialog-edit/dialog-edit.component';
-import {LikeComponent} from "./like/like.component";
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import {LikeComponent} from "./like/like.component";
     DialogExampleComponent,
     DialogAnswerComponent,
     DialogEditComponent,
-    LikeComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,36 +1,64 @@
+<app-header [isVisible]="true"></app-header>
+
+<div class="row router-name">
+  <a [routerLink]="['/questions/']" class="answers-route">Questions</a> / {{question.title}}
+</div>
+
+<div class="row mt-2">
+  <h3 class="question-title">{{question.title}}</h3>
+</div>
 <div class="row">
-  <div class="col-12">
-    <a [routerLink]="['/questions/']" class="answers-route">Questions</a>
-    / questionLinkName
-  </div>
-
-  <div class="col-12">
-    <div (click)="createAnswerDialog()" class="background-btn__add">
-      <img alt="Add answers" class="add-24px-2" src="/assets/add-24-px-2.svg">
-      add new answer...
+  <button (click)="createAnswerDialog()" class="background-btn__add">
+    <img alt="Add answers" class="add-24px-2" src="/assets/add-24-px-2.svg">
+    add new answer...
+  </button>
+</div>
+<div *ngIf="answers" class="row">
+  <div *ngFor="let answer of answers" class="col-12 answer-card">
+    <div class="answer-card__title">
+      <h6>{{answer.text}}</h6>
     </div>
-  </div>
 
-  <div class="col">
-    <div *ngIf="answers.length" class="answers-container">
-      <div *ngFor="let answer of answers" class="col answer-card">
-        <div class="answer-card__title">{{answer.text}}</div>
+    <div class="row answer-card__btn-group mt-2">
+      <div class="col">
+        <div class="vote-section">
+          <button (click)="likeBtn(answer.objectId)" class="upVote">
+            <svg height="11" viewBox="0 0 12 11" width="12" xmlns="http://www.w3.org/2000/svg">
+              <g fill="none" fill-rule="evenodd">
+                <g fill="#4CAF50">
+                  <g>
+                    <path d="M26 13L32 24 20 24z" transform="translate(-470 -457) translate(430 369) translate(20 75)"/>
+                  </g>
+                </g>
+              </g>
+            </svg>
 
-        <div class="answer-card__btn-group">
-          <div class="answer-card__vote-box">
-            <like-box></like-box>
-          </div>
-          <div class="justify-content-center">
-            <button (click)="editAnswerDialog(answer)" class="answer-card__edit-btn">edit</button>
-            <button (click)="deleteAnswer(answer.objectId)" class="answer-card__del-btn">delete</button>
-          </div>
+            <span class="up">{{upVotes}}</span>
+          </button>
+          <button (click)="dislikeBtn(answer.objectId)" class="downVote">
+            <svg height="11" viewBox="0 0 12 11" width="12" xmlns="http://www.w3.org/2000/svg">
+              <g fill="none" fill-rule="evenodd">
+                <g fill="#F44336">
+                  <g>
+                    <path d="M26 24L32 13 20 13z" transform="translate(-560 -457) translate(430 369) translate(110 75)"/>
+                  </g>
+                </g>
+              </g>
+            </svg>
+            <span class="down">{{downVotes}}</span>
+          </button>
         </div>
+
+      </div>
+      <div class="d-flex justify-content-end col">
+        <button (click)="editAnswerDialog(answer)" class="answer-card__edit-btn card-btns">edit</button>
+        <button (click)="deleteAnswer(answer.objectId)" class="answer-card__del-btn card-btns">delete</button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="row justify-content-center answers-quantity">
+<div class="row justify-content-center">
   <div class="col-6">
     <div class="answers-counter">No more answers</div>
   </div>

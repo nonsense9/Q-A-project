@@ -1,11 +1,11 @@
 import {DialogAnswerComponent} from '../dialog-answer/dialog-answer.component';
 import {MatDialog} from '@angular/material/dialog';
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 import {DataService} from '../data.service';
-import {Answer} from '../interfaces';
+import {Answer, Question} from '../interfaces';
 import {DialogEditComponent} from '../dialog-edit/dialog-edit.component';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-answers',
@@ -14,9 +14,26 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class AnswersComponent implements OnInit {
   answers: Answer[] = [];
+
   questionId: string
 
-  constructor(private answerService: DataService, public dialog: MatDialog, private route: ActivatedRoute) {
+  question: Question;
+
+  upVotes: number = 0
+  downVotes: number = 0
+
+  constructor(
+    private answerService: DataService,
+    public dialog: MatDialog,
+    private route: ActivatedRoute,
+    private router: Router,
+  ) {
+    const state = this.router.getCurrentNavigation().extras.state;
+    if (!state) {
+      this.router.navigateByUrl('/questions')
+      return
+    }
+    this.question = state.question
   }
 
   ngOnInit() {
@@ -39,32 +56,32 @@ export class AnswersComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((text) => {
-      if (text) {
-        this.answerService.createAnswer(text, this.questionId).subscribe(() => {
+      if (text && text.trim()) {
+        this.question.answerLength += 1
+        this.answerService.createAnswer(text, this.questionId, this.question.answerLength).subscribe(() => {
           this.getAllAnswers();
         });
       }
     });
   }
 
-
   deleteAnswer(objectId) {
-    this.answerService.deleteAnswer(objectId).subscribe(() => {
+    this.question.answerLength -= 1
+    this.answerService.deleteAnswer(objectId, this.question.objectId, this.question.answerLength, this.upVotes, this.downVotes).subscribe(() => {
       this.answers = this.answers.filter(
-        (answer: Answer) => answer.objectId !== objectId
-      );
+        (answer: Answer) => answer.objectId !== objectId)
+      this.getAllAnswers()
     });
   }
 
   editAnswerDialog(answer) {
-
     let dialogRef = this.dialog.open(DialogEditComponent, {
       height: '300px',
       width: '300px',
     });
 
     dialogRef.afterClosed().subscribe((text) => {
-      if (text) {
+      if (text && text.trim()) {
         this.answerService.editAnswers(text, answer.objectId).subscribe((text: Answer) => {
           this.answers = this.answers.filter(
             ({objectId}) => answer.objectId !== objectId
@@ -74,6 +91,17 @@ export class AnswersComponent implements OnInit {
         });
       }
     })
+  }
+
+  likeBtn(objectId) {
+    this.upVotes += 1
+    this.answerService.updateQuestion(objectId, this.question.answerLength, this.upVotes, this.downVotes)
+
+
+  }
+
+  dislikeBtn(objectId) {
+    this.downVotes++
   }
 }
 

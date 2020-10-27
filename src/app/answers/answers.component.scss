@@ -1,18 +1,66 @@
-$font: "Roboto", sans-serif;
+$font: "Roboto",
+sans-serif;
 $light-text: #aaaaaa;
 $bg-color: #ffffff;
 
+.router-name {
+  height: 14px;
+  font-family: $font;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.4px;
+  color: #8797ab;
+  white-space: nowrap;
+}
 
-.answers-container {
-  $bg-color: #ffffff;
+.answers-route {
+  height: 14px;
+  font-family: $font;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.4px;
+  margin-bottom: 6px;
+  text-decoration: none;
+}
+
+.question-title {
+  height: 32px;
+  font-family: $font;
+  font-size: 20px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.6;
+  letter-spacing: normal;
+  color: #000000;
+  white-space: nowrap;
+
+}
+
+.background-btn__add {
+  width: 100%;
   border-radius: 12px;
+  background-color: #e1e5ea;
+  margin: 14px 0 12px 0;
+  padding: 10px;
+  cursor: pointer;
+  font-family: $font;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1.25px;
+  color: #8797ab;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
 }
 
 .answer-card {
-
-  $light-text: #aaaaaa;
-  $bg-color: #ffffff;
-
   background-color: $bg-color;
   border-radius: 12px;
   padding: 20px;
@@ -42,105 +90,35 @@ $bg-color: #ffffff;
     line-height: 1.14;
     letter-spacing: 1.25px;
     margin-top: 8px;
-
   }
 
   &__btn-group {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    .answer-card__vote-box {
-      display: flex;
-    }
   }
 
   &__edit-btn {
-    border: none;
     color: #2196f3;
-    background-color: transparent;
-    text-transform: uppercase;
-    align-self: flex-end;
-    text-align: right;
-    font-family: $font;
-    font-size: 14px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: 1.25px;
-    outline: none;
-    margin-right: 60px;
   }
 
   &__del-btn {
-    border: none;
     color: $light-text;
-    background-color: transparent;
-    text-transform: uppercase;
-    align-self: flex-end;
-    font-family: $font;
-    font-size: 14px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: 1.25px;
-    outline: none;
   }
 }
 
-.background-btn__add {
-  height: 44px;
-  border-radius: 12px;
-  background-color: #e1e5ea;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 14px 0 12px 0;
-  cursor: pointer;
+.card-btns {
+  background-color: transparent;
+  text-transform: uppercase;
+  align-self: flex-end;
+  text-align: right;
   font-family: $font;
   font-size: 14px;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
   letter-spacing: 1.25px;
-  color: #8797ab;
-  text-transform: uppercase;
+  border: none;
   outline: none;
-}
-
-.answers-route {
-  width: 58px;
-  height: 14px;
-  font-family: $font;
-  font-size: 12px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: 0.4px;
-  margin-bottom: 6px;
-  text-decoration: none;
-}
-
-.answer-title {
-  height: 32px;
-  font-family: $font;
-  font-size: 20px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.6;
-  letter-spacing: normal;
-  color: #000000;
-  white-space: nowrap;
-}
-
-h3 {
-  margin: 0;
-  padding: 0;
+  padding: 3.5px 20px;
 }
 
 .answers-counter {
@@ -156,4 +134,40 @@ h3 {
   color: $light-text;
   margin-bottom: 463px;
   margin-top: 24px;
+}
+
+.vote-section {
+  display: flex;
+}
+
+.upVote, .downVote {
+  display: flex;
+  border-radius: 8px;
+  align-items: center;
+  border: none;
+  flex-direction: row;
+  margin-right: 20px;
+  padding: 6px 20px;
+  outline: none;
+
+  span {
+    width: 10px;
+    height: 16px;
+    font-family: "Roboto", serif;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 1.25px;
+    margin-left: 8px;
+  }
+
+  .up {
+    color: #4caf50;
+  }
+
+  .down {
+    color: #f44336;
+  }
 }

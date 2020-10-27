@@ -1,9 +1,11 @@
 import {DialogExampleComponent} from '../dialog-example/dialog-example.component';
 import {DataService} from '../data.service';
-import {Question} from '../interfaces';
+import {Answer, Question} from '../interfaces';
 
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
+import {Router} from "@angular/router";
+import {DialogEditComponent} from "../dialog-edit/dialog-edit.component";
 
 @Component({
   selector: 'app-questions',
@@ -11,14 +13,33 @@ import {MatDialog} from '@angular/material/dialog';
   styleUrls: ['./questions.component.scss'],
 })
 export class QuestionsComponent implements OnInit {
-  title: string = "Learn about: Angular"
-  screen: string = "Question list item"
-  questions: Question[] = [];
 
-  constructor(private questionService: DataService, public dialog: MatDialog) {
+  title: string = "Learn about: Angular"
+
+  questions: Question[] = []
+
+  answerLength: number = 0
+
+  upVotes: number = 0
+
+  downVotes: number = 0
+
+
+
+  constructor(
+    private questionService: DataService,
+    public dialog: MatDialog,
+    public router: Router
+  ) {
   }
 
   ngOnInit() {
+    this.getAllQuestions();
+  }
+
+
+  navigateAnswers(question: Question) {
+    this.router.navigateByUrl('/questions/' + question.objectId, {state: {question}});
     this.getAllQuestions();
   }
 
@@ -29,7 +50,7 @@ export class QuestionsComponent implements OnInit {
   }
 
   deleteQuestion(objectId) {
-    this.questionService.deleteQuestion(objectId).subscribe((data: Question) => {
+    this.questionService.deleteQuestion(objectId).subscribe(() => {
       this.questions = this.questions.filter(
         (question) => question.objectId !== objectId
       );
@@ -43,11 +64,42 @@ export class QuestionsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((title) => {
-      if (title) {
-        this.questionService.createQuestion(title).subscribe((title: Question) => {
+      if (title && title.trim()) {
+        this.questionService.createQuestion(title).subscribe(() => {
           this.getAllQuestions();
         });
       }
     });
   }
+
+  editQuestionDialog(question) {
+    let dialogRef = this.dialog.open(DialogEditComponent, {
+      height: '300px',
+      width: '300px',
+    });
+
+    dialogRef.afterClosed().subscribe((title) => {
+      if (title && title.trim()) {
+        this.questionService.editQuestions(title, question.objectId).subscribe((title: Question) => {
+          this.questions = this.questions.filter(
+            ({objectId}) => question.objectId !== objectId
+          );
+          this.questions = [...this.questions, {objectId: question.objectId, ...title}];
+          this.getAllQuestions();
+        });
+      }
+    })
+  }
+
+  likeBtn(objectId: string) {
+    this.upVotes += 1
+    this.questionService.updateQuestion(objectId, this.answerLength, this.upVotes)
+  }
+
+  dislikeBtn(objectId: string) {
+
+    this.downVotes++
+  }
 }
+
+
