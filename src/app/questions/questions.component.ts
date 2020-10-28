@@ -88,22 +88,23 @@ export class QuestionsComponent implements OnInit {
   likeBtn(objectId: string, upVote: number) {
     this.questions = this.questions.map((question) => {
       if (question.objectId === objectId) {
-    this.questionService.updateQuestion(objectId, this.answerLength, upVote).subscribe()
+        this.questionService.updateQuestion(objectId, this.answerLength, upVote + 1).subscribe()
 
         return {
           ...question,
           upVote: upVote + 1
         }
       }
-      console.log(question)
       return question
     })
   }
 
+
   dislikeBtn(objectId: string, downVote: number) {
-    this.questionService.updateQuestion(objectId, this.answerLength, downVote + 1).subscribe()
     this.questions = this.questions.map((question) => {
       if (question.objectId === objectId) {
+        this.questionService.updateQuestion(objectId, this.answerLength, downVote + 1).subscribe()
+
         return {
           ...question,
           downVote: downVote + 1

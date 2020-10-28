@@ -121,21 +121,41 @@ export class AnswersComponent implements OnInit {
   }
 
   likeBtn(objectId: string, upVote: number) {
-    this.answerService.updateAnswer(objectId, upVote + 1).subscribe()
-    this.answers = this.answers.filter((answer) => {
-      if (answer.objectId === objectId) {
-        return {
-          ...answer,
-          upVote: upVote + 1
-        }
-      }
-      return answer
-    })
+    for (const answer of this.answers) {
 
+      if (answer.objectId === objectId) {
+        this.answers = this.answers.map((question) => {
+          {
+            this.answerService.updateAnswer(objectId, upVote + 1).subscribe()
+
+            return {
+              ...answer,
+              upVote: upVote + 1
+            }
+          }
+          return answer
+        })
+      }
+    }
   }
 
   dislikeBtn(objectId, downVote) {
+    for (const answer of this.answers) {
 
+      if (answer.objectId === objectId) {
+        this.answers = this.answers.map((question) => {
+          {
+            this.answerService.updateAnswer(objectId, downVote + 1).subscribe()
+
+            return {
+              ...answer,
+              downVote: downVote + 1
+            }
+          }
+          return answer
+        })
+      }
+    }
   }
 
 }

@@ -54,15 +54,16 @@ export class DataService {
     );
   }
 
-  public createAnswer(text: string, questionId: string, answerLength: number, upVote: number = 0, downVote: number = 0):
+  public createAnswer(text: string, questionId: string, answerLength: number = 0, upVote: number = 0, downVote: number = 0):
     Observable<Answer> {
-    this.updateQuestion(questionId, answerLength, upVote, downVote).subscribe()
+    this.updateQuestion(questionId, answerLength).subscribe()
     return this.http.post<Answer>(
       `${this.REST_API_SERVER}/Answer`,
       {text, questionId, upVote, downVote},
       this.headers
     );
   }
+
 
   public editQuestions(title: string, objectId: string): Observable<Question> {
     return this.http.put<Question>(
