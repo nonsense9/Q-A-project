@@ -21,7 +21,7 @@
     <div class="row question-card__btn-group">
       <div class="col">
         <div class="vote-section">
-          <button (click)="likeBtn(question.objectId)" class="upVote">
+          <button (click)="likeBtn(question.objectId, question.upVote)" class="upVote">
             <svg height="11" viewBox="0 0 12 11" width="12" xmlns="http://www.w3.org/2000/svg">
               <g fill="none" fill-rule="evenodd">
                 <g fill="#4CAF50">
@@ -32,9 +32,9 @@
               </g>
             </svg>
 
-            <span class="up">{{upVotes}}</span>
+            <span class="up">{{question.upVote}}</span>
           </button>
-          <button (click)="dislikeBtn(question.objectId)" class="downVote">
+          <button (click)="dislikeBtn(question.objectId, question.downVote)" class="downVote">
             <svg height="11" viewBox="0 0 12 11" width="12" xmlns="http://www.w3.org/2000/svg">
               <g fill="none" fill-rule="evenodd">
                 <g fill="#F44336">
@@ -45,7 +45,7 @@
                 </g>
               </g>
             </svg>
-            <span class="down">{{downVotes}}</span>
+            <span class="down">{{question.downVote}}</span>
           </button>
         </div>
 

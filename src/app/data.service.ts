@@ -80,10 +80,18 @@ export class DataService {
     );
   }
 
-  public updateQuestion(objectId: string, answerLength: number, upVote?: number, downVote?: number): Observable<Answer> {
-    return this.http.put<Answer>(
+  public updateQuestion(objectId: string, answerLength?: number, upVote?: number, downVote?: number): Observable<Question> {
+    return this.http.put<Question>(
       `${this.REST_API_SERVER}/Question/${objectId}`,
       {answerLength, upVote, downVote},
+      this.headers
+    );
+  }
+
+  public updateAnswer(objectId: string, upVote?: number, downVote?: number): Observable<Answer> {
+    return this.http.put<Answer>(
+      `${this.REST_API_SERVER}/Answer/${objectId}`,
+      {upVote, downVote},
       this.headers
     );
   }

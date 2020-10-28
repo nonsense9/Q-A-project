@@ -14,6 +14,12 @@ $bg-color: #ffffff;
   letter-spacing: 0.4px;
   color: #8797ab;
   white-space: nowrap;
+
+
+  span:before {
+    content: "/";
+    margin: 0 8px;
+  }
 }
 
 .answers-route {
@@ -25,7 +31,6 @@ $bg-color: #ffffff;
   font-style: normal;
   line-height: normal;
   letter-spacing: 0.4px;
-  margin: 0 8px 6px 0;
   text-decoration: none;
 }
 
@@ -187,3 +192,4 @@ $bg-color: #ffffff;
   flex: auto;
   margin: 0;
 }
+
