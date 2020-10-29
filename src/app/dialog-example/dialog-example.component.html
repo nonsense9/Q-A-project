@@ -4,7 +4,8 @@
 
 <div>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <textarea rows="5" type="text" formControlName="title" minlength="1" align="center" required></textarea>
+    <textarea rows="5" type="text" formControlName="title" minlength="1" align="center" required>
+    </textarea>
 
     <div mat-dialog-actions align="center">
       <button mat-raised-button type="submit" [disabled]="!form.valid">Add</button>

@@ -92,7 +92,8 @@ export class AnswersComponent implements OnInit {
     let dialogRef = this.dialog.open(DialogEditComponent, {
       height: '300px',
       width: '300px',
-    });
+      data: {}
+    }, );
 
 
     dialogRef.afterClosed().subscribe((title) => {
@@ -115,39 +116,29 @@ export class AnswersComponent implements OnInit {
   }
 
   likeBtn(objectId: string, upVote: number) {
-    for (const answer of this.answers) {
+    this.answers = this.answers.map((answer) => {
       if (answer.objectId === objectId) {
-        this.answers = this.answers.map((question) => {
-          {
-            this.answerService.updateAnswer(objectId, answer.upVote + 1, answer.downVote).subscribe()
-
-            return {
-              ...answer,
-              upVote: upVote + 1
-            }
-          }
-        })
+        this.answerService.updateAnswer(objectId, answer.upVote + 1, answer.downVote).subscribe()
+        return {
+          ...answer,
+          upVote: upVote + 1
+        }
       }
-    }
+      return answer;
+    });
   }
 
   dislikeBtn(objectId: string, downVote: number) {
-    for (const answer of this.answers) {
-
+    this.answers = this.answers.map((answer) => {
       if (answer.objectId === objectId) {
-        this.answers = this.answers.map((question) => {
-          {
-            this.answerService.updateAnswer(objectId, answer.upVote, answer.downVote + 1).subscribe()
-
-            return {
-              ...answer,
-              downVote: downVote + 1
-            }
-          }
-          return answer
-        })
+        this.answerService.updateAnswer(objectId,  answer.upVote, answer.downVote + 1).subscribe()
+        return {
+          ...answer,
+          downVote: downVote + 1
+        }
       }
-    }
+      return answer;
+    })
   }
 }
 
