@@ -20,12 +20,6 @@ export class QuestionsComponent implements OnInit {
 
   answerLength: number = 0
 
-  upVotes: number = 0
-
-  downVotes: number = 0
-
-
-
   constructor(
     private questionService: DataService,
     public dialog: MatDialog,
@@ -37,10 +31,8 @@ export class QuestionsComponent implements OnInit {
     this.getAllQuestions();
   }
 
-
   navigateAnswers(question: Question) {
     this.router.navigateByUrl('/questions/' + question.objectId, {state: {question}});
-    this.getAllQuestions();
   }
 
   getAllQuestions() {
@@ -91,14 +83,31 @@ export class QuestionsComponent implements OnInit {
     })
   }
 
-  likeBtn(objectId: string) {
-    this.upVotes += 1
-    this.questionService.updateQuestion(objectId, this.answerLength, this.upVotes)
+  likeBtn(objectId: string, upVote: number) {
+    this.questions = this.questions.map((question) => {
+      if (question.objectId === objectId) {
+        this.questionService.updateQuestion(objectId, question.answerLength, question.upVote + 1, question.downVote).subscribe()
+        return {
+          ...question,
+          upVote: upVote + 1
+        }
+      }
+      return question
+    })
   }
 
-  dislikeBtn(objectId: string) {
 
-    this.downVotes++
+  dislikeBtn(objectId: string, downVote: number) {
+    this.questions = this.questions.map((question) => {
+      if (question.objectId === objectId) {
+        this.questionService.updateQuestion(objectId, question.answerLength, question.upVote, question.downVote + 1).subscribe()
+        return {
+          ...question,
+          downVote: downVote + 1
+        }
+      }
+      return question
+    })
   }
 }
 
