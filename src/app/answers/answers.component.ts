@@ -6,7 +6,6 @@ import {DataService} from '../data.service';
 import {Answer, Question} from '../interfaces';
 import {DialogEditComponent} from '../dialog-edit/dialog-edit.component';
 import {ActivatedRoute, Router} from "@angular/router";
-import {log} from "util";
 
 @Component({
   selector: 'app-answers',
@@ -16,9 +15,7 @@ import {log} from "util";
 export class AnswersComponent implements OnInit {
   answers: Answer[] = [];
 
-
   question: Question;
-
 
   constructor(
     private answerService: DataService,
@@ -110,10 +107,7 @@ export class AnswersComponent implements OnInit {
   deleteQuestion(objectId) {
     this.answerService.deleteQuestion(this.question.objectId).subscribe(() => {
       for (const answer of this.answers) {
-        this.answerService.deleteAnswer(answer.objectId, answer.questionId, this.question.answerLength, answer.upVote, answer.downVote).subscribe(() => {
-          this.answers = this.answers.filter(
-            (answer: Answer) => answer.objectId !== objectId)
-        })
+        this.answerService.deleteAnswer(answer.objectId, answer.questionId, this.question.answerLength, answer.upVote, answer.downVote).subscribe()
       }
 
       this.router.navigateByUrl('/questions')
@@ -122,30 +116,28 @@ export class AnswersComponent implements OnInit {
 
   likeBtn(objectId: string, upVote: number) {
     for (const answer of this.answers) {
-
       if (answer.objectId === objectId) {
         this.answers = this.answers.map((question) => {
           {
-            this.answerService.updateAnswer(objectId, upVote + 1).subscribe()
+            this.answerService.updateAnswer(objectId, answer.upVote + 1, answer.downVote).subscribe()
 
             return {
               ...answer,
               upVote: upVote + 1
             }
           }
-          return answer
         })
       }
     }
   }
 
-  dislikeBtn(objectId, downVote) {
+  dislikeBtn(objectId: string, downVote: number) {
     for (const answer of this.answers) {
 
       if (answer.objectId === objectId) {
         this.answers = this.answers.map((question) => {
           {
-            this.answerService.updateAnswer(objectId, downVote + 1).subscribe()
+            this.answerService.updateAnswer(objectId, answer.upVote, answer.downVote + 1).subscribe()
 
             return {
               ...answer,
@@ -157,7 +149,6 @@ export class AnswersComponent implements OnInit {
       }
     }
   }
-
 }
 
 

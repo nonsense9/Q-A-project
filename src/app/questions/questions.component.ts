@@ -19,7 +19,6 @@ export class QuestionsComponent implements OnInit {
   questions: Question[] = []
 
   answerLength: number = 0
-  isVisible: boolean = false;
 
   constructor(
     private questionService: DataService,
@@ -31,7 +30,6 @@ export class QuestionsComponent implements OnInit {
   ngOnInit() {
     this.getAllQuestions();
   }
-
 
   navigateAnswers(question: Question) {
     this.router.navigateByUrl('/questions/' + question.objectId, {state: {question}});
@@ -89,8 +87,7 @@ export class QuestionsComponent implements OnInit {
   likeBtn(objectId: string, upVote: number) {
     this.questions = this.questions.map((question) => {
       if (question.objectId === objectId) {
-        this.questionService.updateQuestion(objectId, this.answerLength, upVote + 1).subscribe()
-
+        this.questionService.updateQuestion(objectId, this.answerLength, question.upVote + 1, question.downVote).subscribe()
         return {
           ...question,
           upVote: upVote + 1
@@ -104,8 +101,7 @@ export class QuestionsComponent implements OnInit {
   dislikeBtn(objectId: string, downVote: number) {
     this.questions = this.questions.map((question) => {
       if (question.objectId === objectId) {
-        this.questionService.updateQuestion(objectId, this.answerLength, downVote + 1).subscribe()
-
+        this.questionService.updateQuestion(objectId, this.answerLength, question.upVote, question.downVote + 1).subscribe()
         return {
           ...question,
           downVote: downVote + 1
