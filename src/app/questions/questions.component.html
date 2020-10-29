@@ -1,65 +1,70 @@
-<app-header [isVisible]="false"></app-header>
-
-<div class="row">
-  <small class="questions-route">Questions</small>
-</div>
-<div class="row">
-  <h3 class="question-title">{{title}}</h3>
-</div>
-<div class="row">
-  <button (click)="createQuestionDialog()" class="background-btn__add">
-    <img alt="Add questions" class="add-24px-2" src="/assets/add-24-px-2.svg">
-    add new question...
-  </button>
-</div>
-<div *ngIf="questions" class="row">
-  <div *ngFor="let question of questions" class="col-12 question-card">
-    <div (click)="navigateAnswers(question)" class="question-card__title" routerLinkActive="active">
-      <h6>{{question.title}}</h6>
-      <div class="question-card__answers">{{question.answerLength}} Answers</div>
-    </div>
-    <div class="row question-card__btn-group">
-      <div class="col">
-        <div class="vote-section">
-          <button (click)="likeBtn(question.objectId, question.upVote)" class="upVote">
-            <svg height="11" viewBox="0 0 12 11" width="12" xmlns="http://www.w3.org/2000/svg">
-              <g fill="none" fill-rule="evenodd">
-                <g fill="#4CAF50">
-                  <g>
-                    <path d="M26 13L32 24 20 24z" transform="translate(-470 -457) translate(430 369) translate(20 75)"/>
+<div class="container d-flex flex-column">
+  <app-header [isVisible]="isVisible"></app-header>
+  <div class="row">
+    <small class="questions-route">Questions</small>
+  </div>
+  <div class="row">
+    <h3 class="question-title">{{title}}</h3>
+  </div>
+  <div class="row">
+    <button (click)="createQuestionDialog()" class="background-btn__add">
+      <img alt="Add questions" class="add-24px-2" src="/assets/add-24-px-2.svg">
+      add new question...
+    </button>
+  </div>
+  <div *ngIf="questions" class="row">
+    <div *ngFor="let question of questions" class="col-12 question-card">
+      <div (click)="navigateAnswers(question)" class="question-card__title" routerLinkActive="active">
+        <h6>{{question.title}}</h6>
+        <div class="question-card__answers">{{question.answerLength}} Answers</div>
+      </div>
+      <div class="row question-card__btn-group">
+        <div class="col">
+          <div class="vote-section">
+            <button (click)="likeBtn(question.objectId, question.upVote)" class="upVote">
+              <svg height="11" viewBox="0 0 12 11" width="12" xmlns="http://www.w3.org/2000/svg">
+                <g fill="none" fill-rule="evenodd">
+                  <g fill="#4CAF50">
+                    <g>
+                      <path d="M26 13L32 24 20 24z" transform="translate(-470 -457) translate(430 369) translate(20 75)"/>
+                    </g>
                   </g>
                 </g>
-              </g>
-            </svg>
+              </svg>
 
-            <span class="up">{{question.upVote}}</span>
-          </button>
-          <button (click)="dislikeBtn(question.objectId, question.downVote)" class="downVote">
-            <svg height="11" viewBox="0 0 12 11" width="12" xmlns="http://www.w3.org/2000/svg">
-              <g fill="none" fill-rule="evenodd">
-                <g fill="#F44336">
-                  <g>
-                    <path d="M26 24L32 13 20 13z"
-                          transform="translate(-560 -457) translate(430 369) translate(110 75)"/>
+              <span class="up">{{question.upVote}}</span>
+            </button>
+            <button (click)="dislikeBtn(question.objectId, question.downVote)" class="downVote">
+              <svg height="11" viewBox="0 0 12 11" width="12" xmlns="http://www.w3.org/2000/svg">
+                <g fill="none" fill-rule="evenodd">
+                  <g fill="#F44336">
+                    <g>
+                      <path d="M26 24L32 13 20 13z"
+                            transform="translate(-560 -457) translate(430 369) translate(110 75)"/>
+                    </g>
                   </g>
                 </g>
-              </g>
-            </svg>
-            <span class="down">{{question.downVote}}</span>
-          </button>
+              </svg>
+              <span class="down">{{question.downVote}}</span>
+            </button>
+          </div>
+
         </div>
-
-      </div>
-      <div class="d-flex justify-content-end col">
-        <button (click)="editQuestionDialog(question)" class="question-card__edit-btn card-btns">edit</button>
-        <button (click)="deleteQuestion(question.objectId)" class="question-card__del-btn card-btns">delete</button>
+        <div class="d-flex justify-content-end col">
+          <button (click)="editQuestionDialog(question)" class="question-card__edit-btn card-btns">edit</button>
+          <button (click)="deleteQuestion(question.objectId)" class="question-card__del-btn card-btns">delete</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="row justify-content-center">
-  <div class="col-6">
-    <div class="questions-counter">No more questions</div>
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="questions-counter">No more questions</div>
+    </div>
   </div>
+
+  <footer class="footer mt-auto py-3">
+    <span>©Alexei 2020. All rights reserved</span>
+  </footer>
 </div>

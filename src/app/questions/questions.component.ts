@@ -19,6 +19,7 @@ export class QuestionsComponent implements OnInit {
   questions: Question[] = []
 
   answerLength: number = 0
+  isVisible: boolean = false;
 
   constructor(
     private questionService: DataService,
