@@ -1,14 +1,12 @@
-<div>
-  <h2 mat-dialog-title align="center">Enter your changes</h2>
-</div>
-
-<div class="container">
+<div class="container header">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <textarea rows="5" type="text" formControlName="text" minlength="1" required></textarea>
+    <h1 mat-dialog-title>{{ data.title }}</h1>
+    <div mat-dialog-content>
+      <textarea rows="5" formControlName="message" type="text" class="dialog-message">{{ data.message }}</textarea>
+    </div>
     <div mat-dialog-actions align="center">
       <button mat-raised-button type="submit" [disabled]="!form.valid">Confirm</button>
       <button mat-raised-button mat-dialog-close>Close</button>
     </div>
   </form>
-
 </div>

@@ -1,6 +1,6 @@
 import {DialogExampleComponent} from '../dialog-example/dialog-example.component';
 import {DataService} from '../data.service';
-import {Answer, Question} from '../interfaces';
+import {Question} from '../interfaces';
 
 import {Component, OnInit, Output} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
@@ -14,16 +14,15 @@ import {DialogEditComponent} from "../dialog-edit/dialog-edit.component";
 })
 export class QuestionsComponent implements OnInit {
 
-  title: string = "Learn about: Angular"
+  public title: string = "Learn about: Angular"
 
-  questions: Question[] = []
+  public questions: Question[] = []
 
-  answerLength: number = 0
 
   constructor(
     private questionService: DataService,
-    public dialog: MatDialog,
-    public router: Router
+    private dialog: MatDialog,
+    private router: Router
   ) {
   }
 
@@ -68,6 +67,10 @@ export class QuestionsComponent implements OnInit {
     let dialogRef = this.dialog.open(DialogEditComponent, {
       height: '300px',
       width: '300px',
+      data: {
+        title: 'Enter your changes',
+        message: question.title
+      }
     });
 
     dialogRef.afterClosed().subscribe((title) => {

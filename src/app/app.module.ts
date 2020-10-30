@@ -23,7 +23,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DialogExampleComponent} from './dialog-example/dialog-example.component';
 import {DialogAnswerComponent} from './dialog-answer/dialog-answer.component';
 import {DialogEditComponent} from './dialog-edit/dialog-edit.component';
-import { HeaderComponent } from './header/header.component';
+import {HeaderComponent} from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import { HeaderComponent } from './header/header.component';
     DialogExampleComponent,
     DialogAnswerComponent,
     DialogEditComponent,
-    HeaderComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -62,9 +62,10 @@ import { HeaderComponent } from './header/header.component';
   ],
   entryComponents: [DialogExampleComponent, DialogAnswerComponent, DialogEditComponent],
   providers: [{
-    provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop:true}
+    provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}
   }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
 }
