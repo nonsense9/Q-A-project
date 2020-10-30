@@ -70,30 +70,39 @@ export class AnswersComponent implements OnInit {
   }
 
   editAnswerDialog(answer) {
-    let dialogRef = this.dialog.open(DialogEditComponent, {
-      height: '300px',
-      width: '300px',
-    });
+    for (const answer of this.answers) {
+      let dialogRef = this.dialog.open(DialogEditComponent, {
+        height: '300px',
+        width: '300px',
+        data: {
+          title: "Enter your changes",
+          message: answer.text
+        }
+      });
 
-    dialogRef.afterClosed().subscribe((text) => {
-      if (text && text.trim()) {
-        this.answerService.editAnswers(text, answer.objectId).subscribe((text: Answer) => {
-          this.answers = this.answers.filter(
-            ({objectId}) => answer.objectId !== objectId
-          );
-          this.answers = [...this.answers, {objectId: answer.objectId, ...text}];
-          this.getAllAnswers();
-        });
-      }
-    })
+      dialogRef.afterClosed().subscribe((text) => {
+        if (text && text.trim()) {
+          this.answerService.editAnswers(text, answer.objectId).subscribe((text: Answer) => {
+            this.answers = this.answers.filter(
+              ({objectId}) => answer.objectId !== objectId
+            );
+            this.answers = [...this.answers, {objectId: answer.objectId, ...text}];
+            this.getAllAnswers();
+          });
+        }
+      })
+    }
   }
 
   editQuestionDialog(question: Question) {
     let dialogRef = this.dialog.open(DialogEditComponent, {
       height: '300px',
       width: '300px',
-      data: {}
-    }, );
+      data: {
+        title: "Enter your changes",
+        message: question.title
+      }
+    },);
 
 
     dialogRef.afterClosed().subscribe((title) => {
@@ -104,6 +113,7 @@ export class AnswersComponent implements OnInit {
       }
     })
   }
+
 
   deleteQuestion(objectId) {
     this.answerService.deleteQuestion(this.question.objectId).subscribe(() => {
@@ -131,7 +141,7 @@ export class AnswersComponent implements OnInit {
   dislikeBtn(objectId: string, downVote: number) {
     this.answers = this.answers.map((answer) => {
       if (answer.objectId === objectId) {
-        this.answerService.updateAnswer(objectId,  answer.upVote, answer.downVote + 1).subscribe()
+        this.answerService.updateAnswer(objectId, answer.upVote, answer.downVote + 1).subscribe()
         return {
           ...answer,
           downVote: downVote + 1
@@ -141,9 +151,6 @@ export class AnswersComponent implements OnInit {
     })
   }
 }
-
-
-
 
 
 

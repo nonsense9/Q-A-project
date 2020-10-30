@@ -1,8 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {DialogAnswerComponent} from '../dialog-answer/dialog-answer.component';
-import {Answer} from "../interfaces";
+import {QuestionsComponent} from "../questions/questions.component";
 
 @Component({
   selector: 'app-dialog-edit',
@@ -14,27 +13,24 @@ export class DialogEditComponent implements OnInit {
   form: FormGroup
 
   constructor(
-    public dialogRef: MatDialogRef<DialogEditComponent>,
-    public fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) data: Answer
-  ) {
-  }
+    private dialogRef: MatDialogRef<DialogEditComponent>,
+    private fb: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public data: {
+      message: string,
+      title: string
+    },
+    private mdDialogRef: MatDialogRef<QuestionsComponent>) {}
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      text: ['']
+    this.form = new FormGroup({
+      message: new FormControl(this.data.message)
     })
   }
 
-  close() {
-    this.dialogRef.close('');
-  }
-
-  get text(): AbstractControl {
-    return this.form.get('text')
-  }
-
   onSubmit() {
-    this.dialogRef.close(this.text.value)
+    this.dialogRef.close(this.form.controls.message.value)
   }
 }
+
+
+
