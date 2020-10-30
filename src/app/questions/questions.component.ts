@@ -68,7 +68,7 @@ export class QuestionsComponent implements OnInit {
       height: '300px',
       width: '300px',
       data: {
-        title: 'Enter your changes',
+        title: 'Update your question',
         message: question.title
       }
     });
