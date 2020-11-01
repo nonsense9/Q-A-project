@@ -63,14 +63,13 @@ export class AnswersComponent implements OnInit {
   deleteAnswer(objectId) {
     this.question.answerLength -= 1
     this.answerService.deleteAnswer(objectId, this.question.objectId, this.question.answerLength, this.question.upVote, this.question.downVote).subscribe(() => {
-      // this.answers = this.answers.filter(
-      //   (answer: Answer) => answer.objectId !== objectId)
+      this.answers = this.answers.filter(
+        (answer: Answer) => answer.objectId !== objectId)
       this.getAllAnswers()
     });
   }
 
   editAnswerDialog(answer) {
-    for (const answer of this.answers) {
       let dialogRef = this.dialog.open(DialogEditComponent, {
         height: '300px',
         width: '300px',
@@ -91,7 +90,6 @@ export class AnswersComponent implements OnInit {
           });
         }
       })
-    }
   }
 
   editQuestionDialog(question: Question) {

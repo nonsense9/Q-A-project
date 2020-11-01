@@ -39,6 +39,7 @@ export class DialogExampleComponent implements OnInit {
   onSubmit() {
     this.dialogRef.close(this.title.value);
   }
+
 }
 
 
